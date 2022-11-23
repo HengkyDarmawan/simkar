@@ -3,28 +3,37 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <div class="row">
+        <div class="col">
+            <?= $this->session->flashdata('message'); ?>
+        </div>
+    </div>
     <!-- Profile -->
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-2">
-                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="...">
+                <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="..." class="img-fluid" style="height: 100%;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title font-weight-bold text-primary my-0"><?= $user['name']; ?></h5>
-                    <span class="badge badge-pill badge-success mb-4">Admin</span>
-                    <div class="row">
+                    <h5 class="card-title font-weight-bold text-primary pb-2"><?= $user['name']; ?>
+                        <small>
+                            <span class="badge badge-pill badge-success"><?= $user['role']; ?></span>
+                        </small>
+                    </h5>
+                    <div class="row pb-4">
                         <div class="col-md-4 mb-2">
-                            <i class="fas fa-fw fa-briefcase"></i> IT
+                            <i class="fas fa-fw fa-briefcase"></i><span class="badge badge-pill badge-primary "><?= $user['jabatan']; ?></span>
+                            <span class="badge badge-pill badge-info"><?= $user['jabatan_rangkap']; ?></span>
                         </div>
                         <div class="col-md-4 mb-2">
-                            <i class="fas fa-fw fa-map-marker"></i> Jakarta Barat, Indonesia
+                            <i class="fas fa-fw fa-map-marker"></i> <?= $user['address']; ?>
                         </div>
                         <div class="col-md-4 mb-2">
                             <i class="fas fa-fw fa-envelope"></i> <?= $user['email']; ?>
                         </div>
                     </div>
-                    <p class="card-text mt-5"><small class="text-muted">Karyawan Sejak <?= date('d F Y', $user['created_at']); ?></small></p>
+                    <p class="card-text"><small class="text-muted">Karyawan Sejak <?= date('d F Y', $user['created_at']); ?></small></p>
                 </div>
             </div>
         </div>
@@ -32,28 +41,80 @@
     <!-- Profile Details -->
     <div class="card">
         <div class="card-header">
-            <div class="d-flex">
+            <div class="d-flex col-sm">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Profile Details</h6>
-                <a href="#" class="btn btn-outline-primary btn-md"><i class="fas fa-fw fa-user-edit"></i> Edit Profile</a>
+                <a href="<?= base_url('setting/edit'); ?>" class="btn btn-outline-primary btn-md"><i class="fas fa-fw fa-user-edit"></i> Edit Profile</a>
             </div>
         </div>
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-md-6">Full Name</div>
+                <div class="col-md-6 bold">Full Name</div>
                 <div class="col-md-6"><?= $user['name']; ?></div>
             </div>
+            <hr>
             <div class="row mb-3">
-                <div class="col-md-6">Email</div>
+                <div class="col-md-6 bold">NIK KTP</div>
+                <div class="col-md-6"><?= $user['nik_ktp']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">NPWP</div>
+                <div class="col-md-6"><?= $user['npwp']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Email Pribadi</div>
                 <div class="col-md-6"><?= $user['email']; ?></div>
             </div>
+            <hr>
             <div class="row mb-3">
-                <div class="col-md-6">Address</div>
-                <div class="col-md-6">jakarta Barat</div>
+                <div class="col-md-6 bold">Email Undira</div>
+                <div class="col-md-6"><?= $user['email_undira']; ?></div>
             </div>
+            <hr>
             <div class="row mb-3">
-                <div class="col-md-6">Contact Phone</div>
-                <div class="col-md-6">085411253367</div>
+                <div class="col-md-6 bold">Jabatan</div>
+                <div class="col-md-6">
+                    <span class="badge badge-pill badge-primary"><?= $user['jabatan']; ?></span>
+                    <span class="badge badge-pill badge-info"><?= $user['jabatan_rangkap']; ?></span>
+                </div>
             </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Address</div>
+                <div class="col-md-6"><?= $user['address']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Tempat Lahir</div>
+                <div class="col-md-6"><?= $user['tmpt_lahir']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Tanggal Lahir</div>
+                <div class="col-md-6"><?= $user['tgl_lahir']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Telepon</div>
+                <div class="col-md-6"><?= $user['telp']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">S1</div>
+                <div class="col-md-6"><?= $user['s1']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">S2</div>
+                <div class="col-md-6"><?= $user['s2']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">S3</div>
+                <div class="col-md-6"><?= $user['s3']; ?></div>
+            </div>
+            <hr>
         </div>
     </div>
 </div>

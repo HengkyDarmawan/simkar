@@ -10,10 +10,9 @@ class Menu extends CI_Controller
     }
     public function index()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['menu'] = $this->m_menu->getMenu();
-
         $data['title'] = "Menu Management";
+        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
+        $data['menu'] = $this->m_menu->getMenu();
 
         $this->form_validation->set_rules('menu', 'Menu', 'required');
 
@@ -35,8 +34,8 @@ class Menu extends CI_Controller
     }
     public function edit($id)
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Edit Menu";
+        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
         $data['menu'] = $this->m_menu->getMenuId($id);
 
         $this->form_validation->set_rules('menu', 'Menu', 'required');
@@ -55,8 +54,8 @@ class Menu extends CI_Controller
     // controller sub menu
     public function submenu()
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Sub Menu Management";
+        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
         $data['submenu'] = $this->m_menu->getSubMenu();
         $data['menu'] = $this->m_menu->getMenu();
 
@@ -85,7 +84,7 @@ class Menu extends CI_Controller
 
     // public function editsubmenu($id)
     // {
-    //     $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    //     $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
     //     $data['title'] = "Edit Menu";
     //     $data['submenu'] = $this->m_menu->getSubMenuId($id);
     //     $data['menu'] = $this->m_menu->getMenu();

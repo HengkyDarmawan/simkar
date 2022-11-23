@@ -2,7 +2,7 @@
 <!-- End of Main Content -->
 
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-white mt-3">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
             <span>Copyright &copy; Undira 2022</span>
@@ -59,6 +59,12 @@
 
 <!-- custom ajax checkbox role access-->
 <script>
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+
+
     $('.form-check-input').on('click', function() {
         const menuId = $(this).data('menu');
         const roleId = $(this).data('role');

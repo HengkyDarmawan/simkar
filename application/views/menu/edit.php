@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="menu">Menu</label>
                     <input type="text" name="menu" class="form-control" id="menu" value="<?= $menu['menu']; ?>">
-                    <small class="form-text text-danger">
+                    <?= form_error('menu', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                 <a href="<?= base_url('menu'); ?>" class="btn btn-danger">Cancel</a>

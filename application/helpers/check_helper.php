@@ -3,7 +3,7 @@
 function is_logged_in()
 {
     $ci = get_instance();
-    if (!$ci->session->userdata('email')) {
+    if (!$ci->session->userdata('email_undira')) {
         redirect('auth');
     } else {
         $role_id = $ci->session->userdata('role_id');
@@ -32,18 +32,5 @@ function check_access($role_id, $menu_id)
 
     if ($result->num_rows() > 0) {
         return "checked='checked'";
-    }
-}
-function goToDefaultPage()
-{
-    $ci = get_instance();
-    if ($ci->session->userdata('role_id') == 1) {
-        redirect('admin');
-    } elseif ($ci->session->userdata('role_id') == 2) {
-        redirect('staf');
-    } elseif ($ci->session->userdata('role_id') == 3) {
-        redirect('user');
-    } else {
-        redirect('auth');
     }
 }

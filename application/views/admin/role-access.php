@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
     <?= $this->session->flashdata('message'); ?>
 
-    <h5>Role : <?= $role['name']; ?></h5>
+    <h5>Role : <?= $role['role']; ?></h5>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
