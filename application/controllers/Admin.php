@@ -10,7 +10,8 @@ class Admin extends CI_Controller
     }
     public function index()
     {
-        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
+
+        $data['user'] = $this->m_auth->getUserLogin();
         $data['title'] = "Dashboard";
 
         $this->load->view('template/header', $data);
@@ -19,7 +20,8 @@ class Admin extends CI_Controller
     }
     public function role()
     {
-        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
+
+        $data['user'] = $this->m_auth->getUserLogin();
         $data['title'] = "Role";
         $data['role'] = $this->m_admin->getRole();
 
@@ -31,7 +33,8 @@ class Admin extends CI_Controller
     public function roleAccess($role_id)
     {
         $data['title'] = "Role Access";
-        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
+
+        $data['user'] = $this->m_auth->getUserLogin();
         $data['role'] = $this->m_admin->getRoleId($role_id);
         $this->db->where('id !=', 1);
         $data['menu'] = $this->m_menu->getMenu();
@@ -44,7 +47,8 @@ class Admin extends CI_Controller
     public function roleAccessSubmenu()
     {
         $data['title'] = "Role Access";
-        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
+
+        $data['user'] = $this->m_auth->getUserLogin();
         $data['menu'] = $this->m_menu->getMenu();
 
         $this->load->view('template/header', $data);

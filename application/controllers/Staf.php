@@ -10,7 +10,7 @@ class Staf extends CI_Controller
     }
     public function index()
     {
-        $data['user'] = $this->db->get_where('user', ['email_undira' => $this->session->userdata('email_undira')])->row_array();
+        $data['user'] = $this->m_auth->getUserLogin();
 
         $data['title'] = "Dashboard";
         $this->load->view('template/header', $data);

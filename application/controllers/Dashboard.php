@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller
     }
     public function index()
     {
+        $data['user'] = $this->m_auth->getUserLogin();
         $this->load->view('template/header');
         $this->load->view('dashboard/dashboard');
         $this->load->view('template/footer');

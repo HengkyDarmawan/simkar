@@ -11,7 +11,7 @@ class Penghargaan extends CI_Controller
     public function index()
     {
         $data['title'] = "Penghargaan";
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user'] = $this->m_auth->getUserLogin();
         $data['penghargaan'] = $this->m_penghargaan->getPenghargaan();
 
         $this->form_validation->set_rules('name', 'Name', 'required');
@@ -35,8 +35,8 @@ class Penghargaan extends CI_Controller
 
     public function edit($id)
     {
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['title'] = "Edit Penghargaan";
+        $data['user'] = $this->m_auth->getUserLogin();
         $data['penghargaan'] = $this->m_penghargaan->getPenghargaanId($id);
 
         $this->form_validation->set_rules('name', 'Name', 'required');
