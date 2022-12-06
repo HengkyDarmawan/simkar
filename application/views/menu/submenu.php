@@ -25,7 +25,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <th>#</th>
                             <th>Title</th>
@@ -36,7 +36,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    <tfoot class="text-center">
                         <tr>
                             <th>#</th>
                             <th>title</th>
@@ -47,7 +47,7 @@
                             <th>Action</th>
                         </tr>
                     </tfoot>
-                    <tbody>
+                    <tbody class="text-center">
                         <?php $i = 1; ?>
                         <?php foreach ($submenu as $submen) : ?>
                             <tr>
@@ -58,8 +58,8 @@
                                 <td><?= $submen['icon']; ?></td>
                                 <td><?= $submen['is_active']; ?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>menu/editsubmenu/<?= $submen['id']; ?>" class="btn btn-outline-success">Edit</a>
-                                    <a href="<?= base_url(); ?>menu/hapussubmenu/<?= $submen['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('yakin?');">Delete</a>
+                                    <a href="<?= base_url(); ?>menu/editsubmenu/<?= $submen['id']; ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                                    <a href="<?= base_url(); ?>menu/hapussubmenu/<?= $submen['id']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('yakin?');">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

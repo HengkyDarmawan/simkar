@@ -17,10 +17,10 @@
                 </div>
                 <div class="form-group">
                     <label>Menu</label>
-                    <select name="menu_id" id="menu_id" class="form-control">
+                    <select class="form-control" name="menu_id">
                         <option value="">Select Menu</option>
                         <?php foreach ($menu as $men) : ?>
-                            <option value="<?= $men['id']; ?>"><?= $men['menu']; ?></option>
+                            <option value="<?= $men['id']; ?>" <?= $men['id'] == $submenu['menu_id'] ? "selected" : null ?>><?= $men['menu']; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

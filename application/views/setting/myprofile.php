@@ -23,8 +23,8 @@
                     </h5>
                     <div class="row pb-4">
                         <div class="col-md-4 mb-2">
-                            <i class="fas fa-fw fa-briefcase"></i><span class="badge badge-pill badge-primary "><?= $user['jabatan']; ?></span>
-                            <span class="badge badge-pill badge-info"><?= $user['jabatan_rangkap']; ?></span>
+                            <i class="fas fa-fw fa-briefcase"></i><span class="badge badge-pill badge-primary ">Manajer IT</span>
+                            <span class="badge badge-pill badge-info">Dosen</span>
                         </div>
                         <div class="col-md-4 mb-2">
                             <i class="fas fa-fw fa-map-marker"></i> <?= $user['address']; ?>
@@ -75,8 +75,8 @@
             <div class="row mb-3">
                 <div class="col-md-6 bold">Jabatan</div>
                 <div class="col-md-6">
-                    <span class="badge badge-pill badge-primary"><?= $user['jabatan']; ?></span>
-                    <span class="badge badge-pill badge-info"><?= $user['jabatan_rangkap']; ?></span>
+                    <span class="badge badge-pill badge-primary"><?= $user['jabatan_id']; ?></span>
+                    <!-- <span class="badge badge-pill badge-info"><?= $user['jabatan_rangkap']; ?></span> -->
                 </div>
             </div>
             <hr>

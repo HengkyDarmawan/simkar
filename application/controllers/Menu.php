@@ -82,26 +82,26 @@ class Menu extends CI_Controller
         redirect('menu/submenu');
     }
 
-    // public function editsubmenu($id)
-    // {
-    //     $data['user'] = $this->m_auth->getUserLogin();
-    //     $data['title'] = "Edit Menu";
-    //     $data['submenu'] = $this->m_menu->getSubMenuId($id);
-    //     $data['menu'] = $this->m_menu->getMenu();
+    public function editsubmenu($id)
+    {
+        $data['user'] = $this->m_auth->getUserLogin();
+        $data['title'] = "Edit Menu";
+        $data['submenu'] = $this->m_menu->getSubMenuId($id);
+        $data['menu'] = $this->m_menu->getMenu();
 
-    //     $this->form_validation->set_rules('title', 'Title', 'required');
-    //     $this->form_validation->set_rules('menu_id', 'Menu', 'required');
-    //     $this->form_validation->set_rules('url', 'URL', 'required');
-    //     $this->form_validation->set_rules('icon', 'Icon', 'required');
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('menu_id', 'Menu', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('icon', 'Icon', 'required');
 
-    //     if ($this->form_validation->run() == false) {
-    //         $this->load->view('template/header', $data);
-    //         $this->load->view('menu/editsubmenu', $data);
-    //         $this->load->view('template/footer');
-    //     } else {
-    //         $this->m_menu->editSubMenu();
-    //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Menu Berhasil di Edit !!!</div>');
-    //         redirect('menu/submenu');
-    //     }
-    // }
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('menu/submenu_edit', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->m_menu->editSubMenu();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub Menu Berhasil di Edit !!!</div>');
+            redirect('menu/submenu');
+        }
+    }
 }

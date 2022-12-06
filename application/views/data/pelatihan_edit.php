@@ -31,13 +31,28 @@
                     <?= form_error('organisasi_penerbit', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
+                    <label>lokasi Pelatihan</label>
+                    <input type="text" name="lokasi_pelatihan" class="form-control" value="<?= $pelatihan['lokasi_pelatihan']; ?>">
+                    <?= form_error('lokasi_pelatihan', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Mulai </label>
+                    <input type="date" name="tgl_mulai" class="form-control" value="<?= $pelatihan['tgl_mulai']; ?>">
+                    <?= form_error('tgl_mulai', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Tanggal Selesai</label>
+                    <input type="date" name="tgl_selesai" class="form-control" value="<?= $pelatihan['tgl_selesai']; ?>">
+                    <?= form_error('tgl_selesai', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
                     <label>URL Sertifikat</label>
                     <input type="text" name="url" class="form-control" value="<?= $pelatihan['url']; ?>">
                     <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label>Status</label>
-                    <input type="text" name="status" value="proses" class="form-control" value="<?= $pelatihan['status']; ?>" placeholder="Status">
+                    <input type="text" name="status" value="<?= $pelatihan['status']; ?>" class="form-control" value="<?= $pelatihan['status']; ?>" placeholder="Status">
                     <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>

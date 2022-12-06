@@ -39,10 +39,10 @@
                                 <td><?= $i++; ?></td>
                                 <td><?= $rol['role']; ?></td>
                                 <td>
-                                    <a href="<?= base_url("admin/roleaccesssubmenu/") . $rol['id'] ?>" class="btn btn-outline-primary"><i class="fas fa-fw fa-bars"></i></a>
-                                    <a href="<?= base_url("admin/roleaccess/") . $rol['id'] ?>" class="btn btn-outline-warning">Access</a>
-                                    <a href="<?= base_url('admin/edit/') . $rol['id']; ?>" class=" btn btn-outline-success">Edit</a>
-                                    <a href="<?= base_url('admin/hapus/') . $rol['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('yakin?');">Delete</a>
+                                    <a href="<?= base_url("admin/roleaccesssubmenu/") . $rol['id'] ?>" class="btn btn-outline-primary btn-sm"><i class="fas fa-fw fa-bars"></i></a>
+                                    <a href="<?= base_url("admin/roleaccess/") . $rol['id'] ?>" class="btn btn-outline-warning btn-sm">Access</a>
+                                    <a href="<?= base_url('admin/edit/') . $rol['id']; ?>" class=" btn btn-outline-success btn-sm">Edit</a>
+                                    <a href="<?= base_url('admin/hapus/') . $rol['id']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('yakin?');">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

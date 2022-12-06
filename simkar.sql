@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2022 at 03:28 AM
+-- Generation Time: Dec 06, 2022 at 01:55 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -32,7 +32,10 @@ CREATE TABLE `data_pelatihan` (
   `user_id` int(11) NOT NULL,
   `nama_pelatihan` varchar(128) NOT NULL,
   `organisasi_penerbit` varchar(128) NOT NULL,
+  `lokasi_pelatihan` varchar(128) NOT NULL,
   `url` varchar(128) NOT NULL,
+  `tgl_mulai` date NOT NULL,
+  `tgl_selesai` date NOT NULL,
   `status` varchar(128) NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,11 +44,11 @@ CREATE TABLE `data_pelatihan` (
 -- Dumping data for table `data_pelatihan`
 --
 
-INSERT INTO `data_pelatihan` (`id_pelatihan`, `user_id`, `nama_pelatihan`, `organisasi_penerbit`, `url`, `status`, `created_at`) VALUES
-(1, 1, 'Kampus Merdeka', 'Dicoding', 'https://www.linkedin.com/in/hengky-darmawan/', 'active', '2022-11-30'),
-(2, 1, 'Web Master', 'Dumet School', 'https://getbootstrap.com/', 'proses', '2022-12-01'),
-(4, 1, 'aa', 'aa', 'https://codeigniter.com/userguide3', 'ditolak', '2022-12-01'),
-(6, 5, 'tesa', 'tesa', 'tesa', 'active', '2022-12-01');
+INSERT INTO `data_pelatihan` (`id_pelatihan`, `user_id`, `nama_pelatihan`, `organisasi_penerbit`, `lokasi_pelatihan`, `url`, `tgl_mulai`, `tgl_selesai`, `status`, `created_at`) VALUES
+(1, 1, 'Kampus Merdeka', 'Dicoding', 'Online', 'https://www.linkedin.com/in/hengky-darmawan/', '2022-03-01', '2022-08-31', 'active', '2022-11-30'),
+(2, 1, 'Web Master', 'Dumet School', 'Tanjung Duren', 'https://getbootstrap.com/', '2022-11-01', '2022-12-01', 'proses', '2022-12-01'),
+(4, 1, 'React Js', 'Digital Talent & KomInfo', 'Online', 'https://bucket.cloud.lintasarta.co.id:8082/dts-sertifikat/sertifikat-pdf/e444dae6-c6db-46bd-8da0-23b811772f96.pdf', '2022-05-31', '2022-06-24', 'proses', '2022-12-01'),
+(7, 1, 'HTML', 'Progate', 'Online', 'https://progate.com/', '2022-12-01', '2022-12-20', 'active', '2022-12-03');
 
 -- --------------------------------------------------------
 
@@ -72,28 +75,6 @@ INSERT INTO `data_pengalaman` (`id`, `nama_perusahaan`, `jabatan`, `tgl_mulai`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jabatan`
---
-
-CREATE TABLE `jabatan` (
-  `id` int(11) NOT NULL,
-  `jabatan` varchar(128) NOT NULL,
-  `jabatan_rangkap` varchar(128) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `jabatan`
---
-
-INSERT INTO `jabatan` (`id`, `jabatan`, `jabatan_rangkap`) VALUES
-(1, 'STAFF BIRO SDM', NULL),
-(2, 'Dosen', NULL),
-(3, 'Manajer IT', 'Dosen'),
-(4, 'Magang', 'Asisten Dosen');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `master_agama`
 --
 
@@ -115,41 +96,21 @@ INSERT INTO `master_agama` (`id`, `agama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_departement`
+-- Table structure for table `master_golongan`
 --
 
-CREATE TABLE `master_departement` (
-  `id` int(11) NOT NULL,
-  `departement` varchar(128) NOT NULL
+CREATE TABLE `master_golongan` (
+  `id_golongan` int(11) NOT NULL,
+  `nama_golongan` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_departement`
+-- Dumping data for table `master_golongan`
 --
 
-INSERT INTO `master_departement` (`id`, `departement`) VALUES
-(1, 'Keuangan'),
-(2, 'IT');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `master_divisi`
---
-
-CREATE TABLE `master_divisi` (
-  `id` int(11) NOT NULL,
-  `id_department` int(11) NOT NULL,
-  `divisi` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `master_divisi`
---
-
-INSERT INTO `master_divisi` (`id`, `id_department`, `divisi`) VALUES
-(1, 2, 'Biro IT'),
-(2, 1, 'Biro Keuangan');
+INSERT INTO `master_golongan` (`id_golongan`, `nama_golongan`) VALUES
+(1, 'III/a'),
+(2, 'III/b');
 
 -- --------------------------------------------------------
 
@@ -175,6 +136,33 @@ INSERT INTO `master_hukuman` (`id`, `hukuman`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `master_jabatan`
+--
+
+CREATE TABLE `master_jabatan` (
+  `id_jabatan` int(11) NOT NULL,
+  `parent_jabatan_id` int(11) NOT NULL,
+  `paket_id` int(11) NOT NULL,
+  `jabatan` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_jabatan`
+--
+
+INSERT INTO `master_jabatan` (`id_jabatan`, `parent_jabatan_id`, `paket_id`, `jabatan`) VALUES
+(1, 1, 2, 'WR 1'),
+(2, 1, 0, 'WR 2'),
+(3, 2, 0, 'SDM'),
+(4, 1, 0, 'WR3'),
+(5, 1, 0, 'WR4'),
+(8, 1, 0, 'Rektor'),
+(10, 6, 1, 'Manajer IT'),
+(11, 4, 0, 'Magang');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `master_jurusan`
 --
 
@@ -196,14 +184,49 @@ INSERT INTO `master_jurusan` (`id`, `jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_keluarga`
+-- Table structure for table `master_paket`
 --
 
-CREATE TABLE `master_keluarga` (
-  `id` int(11) NOT NULL,
-  `kode_keluarga` varchar(128) NOT NULL,
-  `status_keluarga` varchar(128) NOT NULL
+CREATE TABLE `master_paket` (
+  `id_paket` int(11) NOT NULL,
+  `golongan_id` int(11) DEFAULT NULL,
+  `nama_paket` varchar(128) NOT NULL,
+  `gaji_pokok` int(11) DEFAULT NULL,
+  `tj_jabatan_fungsional` int(11) DEFAULT NULL,
+  `tj_pendidikan_s3` int(11) DEFAULT NULL,
+  `tj_transport_makan` int(11) DEFAULT NULL,
+  `tj_jabatan_struktural` int(11) DEFAULT NULL,
+  `tj_jabatan_rangkap` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_paket`
+--
+
+INSERT INTO `master_paket` (`id_paket`, `golongan_id`, `nama_paket`, `gaji_pokok`, `tj_jabatan_fungsional`, `tj_pendidikan_s3`, `tj_transport_makan`, `tj_jabatan_struktural`, `tj_jabatan_rangkap`) VALUES
+(1, NULL, 'Tipe A', 10000000, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 'Tipe B', 2069550, 1074468, NULL, 1800000, 1831650, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `master_parent_jabatan`
+--
+
+CREATE TABLE `master_parent_jabatan` (
+  `id_parent_jabatan` int(11) NOT NULL,
+  `parent_jabatan` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_parent_jabatan`
+--
+
+INSERT INTO `master_parent_jabatan` (`id_parent_jabatan`, `parent_jabatan`) VALUES
+(1, 'Manager'),
+(2, 'Keuangan'),
+(4, 'Manajer IT'),
+(6, 'WR1');
 
 -- --------------------------------------------------------
 
@@ -254,11 +277,12 @@ INSERT INTO `master_university` (`id`, `universitas`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
-  `id_jabatan` int(11) NOT NULL,
-  `id_jabatan_rangkap` int(11) DEFAULT NULL,
+  `jabatan_id` int(11) NOT NULL,
   `address` varchar(128) NOT NULL,
   `tmpt_lahir` varchar(128) NOT NULL,
   `tgl_lahir` date DEFAULT NULL,
+  `jenis_kelamin` varchar(128) NOT NULL,
+  `agama` varchar(128) NOT NULL,
   `nik_ktp` bigint(16) NOT NULL,
   `nik_karyawan` bigint(13) NOT NULL,
   `no_rek` bigint(16) NOT NULL,
@@ -284,11 +308,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `id_jabatan`, `id_jabatan_rangkap`, `address`, `tmpt_lahir`, `tgl_lahir`, `nik_ktp`, `nik_karyawan`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `s1`, `s2`, `s3`, `tmt_awal`, `tmt_akhir`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `image`, `password`, `role_id`, `is_active`, `created_at`) VALUES
-(1, 'Hengky Darmawan', 4, NULL, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 3174092505520003, 1100000000011, 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Universitas Dian Nusantara', NULL, NULL, '2019-11-04', '2023-11-13', 1234567, 123456789, 'default.png', '$2y$10$Qw5b/rr9DVi9Hs01LvJsiO8SQriPDSTHHKsqKaiIbSJ6/R4ZyqGbm', 1, 1, 20221102),
-(3, 'Athiyyah Nadiya', 1, NULL, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 0, 1100000000013, 0, '0', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', NULL, NULL, NULL, NULL, NULL, 0, 0, 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, 101022),
-(4, 'Giri', 3, NULL, '', '', NULL, 0, 1100000000010, 0, '0', 'giri@gmail.com', 'giriundira@gmail.com', '0', NULL, NULL, NULL, NULL, NULL, 0, 0, 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, 1112),
-(5, 'tes', 2, NULL, 'Jakarta Selatan, Indonesia', 'Surabaya', '1995-11-02', 123, 123, 123, '1321', 'tes@gmail.com', 'hengkycross172@gmail.com', '089659172255', 'Universitas Indonesia', 'Institut Teknologi Bandung', NULL, NULL, NULL, 1213, 1321, 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, 11111);
+INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `nik_ktp`, `nik_karyawan`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `s1`, `s2`, `s3`, `tmt_awal`, `tmt_akhir`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `image`, `password`, `role_id`, `is_active`, `created_at`) VALUES
+(1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Laki-laki', 'Buddha', 3174092505520003, 1100000000011, 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Universitas Dian Nusantara', NULL, NULL, '2019-11-04', '2023-11-13', 1234567, 123456789, 'default.png', '$2y$10$Qw5b/rr9DVi9Hs01LvJsiO8SQriPDSTHHKsqKaiIbSJ6/R4ZyqGbm', 1, 1, 20221102),
+(3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 0, 1100000000013, 0, '0', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', NULL, NULL, NULL, NULL, NULL, 0, 0, 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, 101022),
+(4, 'Giri', 3, '', '', NULL, 'Laki-laki', 'Islam', 0, 1100000000010, 0, '0', 'giri@gmail.com', 'giriundira@gmail.com', '0', NULL, NULL, NULL, NULL, NULL, 0, 0, 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, 1112),
+(5, 'tes', 2, 'Jakarta Selatan, Indonesia', 'Surabaya', '1995-11-02', '', '', 123, 123, 123, '1321', 'tes@gmail.com', 'hengkycross172@gmail.com', '089659172255', 'Universitas Indonesia', 'Institut Teknologi Bandung', NULL, NULL, NULL, 1213, 1321, 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, 11111);
 
 -- --------------------------------------------------------
 
@@ -344,7 +368,6 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (5, 'Laporan'),
 (12, 'Master Data'),
 (16, 'Sertifikat'),
-(17, 'Pelatihan'),
 (18, 'Setting');
 
 -- --------------------------------------------------------
@@ -388,17 +411,17 @@ CREATE TABLE `user_sub_menu` (
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
-(2, 2, 'Staf', 'staf', 'fas fa-fw fa-tachometer-alt', 1),
+(2, 2, 'Dashboard Staf', 'staf/index', 'fas fa-fw fa-tachometer-alt', 1),
 (3, 3, 'User', 'user', 'fas fa-fw fa-tachometer-alt', 1),
 (5, 4, 'Menu Management', 'menu', 'far fa-fw fa-folder', 1),
 (6, 4, 'Sub Menu Management', 'menu/submenu', 'far fa-fw fa-folder-open', 1),
 (13, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-check', 1),
-(14, 17, 'Lokasi Pelatihan', 'pelatihan/lokasi', 'fas fa-fw fa-map', 1),
 (15, 18, 'My Profile', 'setting', 'fas fa-fw fa-users-cog', 1),
 (17, 12, 'Data Pegawai', 'pegawai/index', 'fas fa-fw fa-user-tie', 1),
-(18, 18, 'Edit Profile', 'setting/edit', 'fas fa-fw fa-user-edit', 0),
+(18, 18, 'Edit Profile', 'setting/edit', 'fas fa-fw fa-user-edit', 1),
 (19, 18, 'Change Password', 'setting/changepassword', 'fas fa-fw fa-user-lock', 1),
-(20, 12, 'Data Jabatan', 'jabatan/index', 'fas fa-fw fa-briefcase', 1),
+(20, 12, 'Data Parent Jabatan', 'jabatan/parentjabatan', 'fas fa-fw fa-plus-square', 1),
+(21, 12, 'Data Jabatan', 'jabatan/index', 'fas fa-fw fa-briefcase', 1),
 (22, 12, 'Data Pelatihan', 'pelatihan/index', 'fas fa-fw fa-chalkboard-teacher', 1);
 
 -- --------------------------------------------------------
@@ -431,28 +454,16 @@ ALTER TABLE `data_pengalaman`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jabatan`
---
-ALTER TABLE `jabatan`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `master_agama`
 --
 ALTER TABLE `master_agama`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_departement`
+-- Indexes for table `master_golongan`
 --
-ALTER TABLE `master_departement`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `master_divisi`
---
-ALTER TABLE `master_divisi`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `master_golongan`
+  ADD PRIMARY KEY (`id_golongan`);
 
 --
 -- Indexes for table `master_hukuman`
@@ -461,16 +472,28 @@ ALTER TABLE `master_hukuman`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `master_jabatan`
+--
+ALTER TABLE `master_jabatan`
+  ADD PRIMARY KEY (`id_jabatan`);
+
+--
 -- Indexes for table `master_jurusan`
 --
 ALTER TABLE `master_jurusan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_keluarga`
+-- Indexes for table `master_paket`
 --
-ALTER TABLE `master_keluarga`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `master_paket`
+  ADD PRIMARY KEY (`id_paket`);
+
+--
+-- Indexes for table `master_parent_jabatan`
+--
+ALTER TABLE `master_parent_jabatan`
+  ADD PRIMARY KEY (`id_parent_jabatan`);
 
 --
 -- Indexes for table `master_status_pegawai`
@@ -528,7 +551,7 @@ ALTER TABLE `user_token`
 -- AUTO_INCREMENT for table `data_pelatihan`
 --
 ALTER TABLE `data_pelatihan`
-  MODIFY `id_pelatihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pelatihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `data_pengalaman`
@@ -537,28 +560,16 @@ ALTER TABLE `data_pengalaman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `jabatan`
---
-ALTER TABLE `jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `master_agama`
 --
 ALTER TABLE `master_agama`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `master_departement`
+-- AUTO_INCREMENT for table `master_golongan`
 --
-ALTER TABLE `master_departement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `master_divisi`
---
-ALTER TABLE `master_divisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `master_golongan`
+  MODIFY `id_golongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `master_hukuman`
@@ -567,16 +578,28 @@ ALTER TABLE `master_hukuman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `master_jabatan`
+--
+ALTER TABLE `master_jabatan`
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `master_jurusan`
 --
 ALTER TABLE `master_jurusan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `master_keluarga`
+-- AUTO_INCREMENT for table `master_paket`
 --
-ALTER TABLE `master_keluarga`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `master_paket`
+  MODIFY `id_paket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `master_parent_jabatan`
+--
+ALTER TABLE `master_parent_jabatan`
+  MODIFY `id_parent_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `master_status_pegawai`
@@ -618,7 +641,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user_token`

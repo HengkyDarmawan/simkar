@@ -11,7 +11,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
-                <a href="<?= base_url('add'); ?>" class="btn btn-outline-primary btn-md">Add New Jabatan</a>
+                <a href="<?= base_url('jabatan/addJabatan'); ?>" class="btn btn-outline-primary btn-md">Add New Jabatan</a>
             </div>
 
         </div>
@@ -22,7 +22,7 @@
                         <tr>
                             <th>#</th>
                             <th>Jabatan</th>
-                            <th>Jabatan Rangkap</th>
+                            <th>Parent Jabatan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,7 +30,7 @@
                         <tr>
                             <th>#</th>
                             <th>Jabatan</th>
-                            <th>Jabatan Rangkap</th>
+                            <th>Parent Jabatan</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -40,10 +40,10 @@
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $jab['jabatan']; ?></td>
-                                <td><?= $jab['jabatan_rangkap']; ?></td>
+                                <td><?= $jab['parent_jabatan']; ?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>jabatan/edit/<?= $jab['id']; ?>" class="btn btn-outline-success">Edit</a>
-                                    <a href="<?= base_url(); ?>jabatan/hapus/<?= $jab['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('yakin?');">Delete</a>
+                                    <a href="<?= base_url(); ?>jabatan/editjabatan/<?= $jab['id_jabatan']; ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                                    <a href="<?= base_url(); ?>jabatan/hapusjabatan/<?= $jab['id_jabatan']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('yakin?');">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -3,11 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pelatihan extends CI_Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        is_logged_in();
-    }
+    // public function __construct()
+    // {
+    //     parent::__construct();
+    //     is_logged_in();
+    // }
     public function index()
     {
         $data['title'] = "Data Pelatihan";
@@ -22,16 +22,18 @@ class Pelatihan extends CI_Controller
         $data['title'] = "Add Data Pelatihan";
         $data['user'] = $this->m_auth->getUserLogin();
         $data['users'] = $this->m_user->getAllUser();
-        $data['pelatihan'] = $this->m_pelatihan->getAllPelatihan();
 
         $this->form_validation->set_rules('user_id', 'Nama Karyawan', 'required');
         $this->form_validation->set_rules('nama_pelatihan', 'Nama Pelatihan', 'required');
         $this->form_validation->set_rules('organisasi_penerbit', 'Organisasi Penerbit', 'required');
+        $this->form_validation->set_rules('lokasi_pelatihan', 'Lokasi Pelatihan', 'required');
+        $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tgl_selesai', 'Tanggal Selesai', 'required');
         $this->form_validation->set_rules('url', 'URL', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
-            $this->load->view('data/add_pelatihan', $data);
+            $this->load->view('data/pelatihan_add', $data);
             $this->load->view('template/footer');
         } else {
             $this->m_pelatihan->addPelatihan();
@@ -57,16 +59,31 @@ class Pelatihan extends CI_Controller
         $this->form_validation->set_rules('user_id', 'Nama Karyawan', 'required');
         $this->form_validation->set_rules('nama_pelatihan', 'Nama Pelatihan', 'required');
         $this->form_validation->set_rules('organisasi_penerbit', 'Organisasi Penerbit', 'required');
+        $this->form_validation->set_rules('lokasi_pelatihan', 'Lokasi Pelatihan', 'required');
+        $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tgl_selesai', 'Tanggal Selesai', 'required');
         $this->form_validation->set_rules('url', 'URL', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
-            $this->load->view('data/edit_pelatihan', $data);
+            $this->load->view('data/pelatihan_edit', $data);
             $this->load->view('template/footer');
         } else {
             $this->m_pelatihan->editPelatihan();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pelatihan Di Edit !!!</div>');
             redirect('pelatihan');
         }
+    }
+    public function detailPelatihan()
+    {
+        $id = $this->uri->segment(3);
+
+        $data['title'] = 'Detail Pelatihan';
+        $data['user'] = $this->m_auth->getUserLogin();
+        $data['pelatihan'] = $this->m_pelatihan->GetPelatihanByID($id);
+
+        $this->load->view('template/header', $data);
+        $this->load->view('data/pelatihan_detail', $data);
+        $this->load->view('template/footer');
     }
 }
