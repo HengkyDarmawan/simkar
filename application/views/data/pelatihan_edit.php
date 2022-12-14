@@ -12,9 +12,9 @@
             <form action="" method="post">
                 <input type="hidden" name="id_pelatihan" value="<?= $pelatihan['id_pelatihan']; ?>">
                 <div class="form-group">
-                    <label>Nama Karyawan</label>
+                    <label>Nama Pegawai</label>
                     <select class="form-control" name="user_id">
-                        <option value="">Select Karyawan</option>
+                        <option value="">Select Pegawai</option>
                         <?php foreach ($users as $user) : ?>
                             <option value="<?= $user['id']; ?>" <?= $user['id'] == $pelatihan['user_id'] ? "selected" : null ?>><?= $user['name']; ?></option>
                         <?php endforeach; ?>
@@ -34,6 +34,11 @@
                     <label>lokasi Pelatihan</label>
                     <input type="text" name="lokasi_pelatihan" class="form-control" value="<?= $pelatihan['lokasi_pelatihan']; ?>">
                     <?= form_error('lokasi_pelatihan', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi Pelatihan</label>
+                    <input type="text" name="deskripsi" class="form-control" value="<?= $pelatihan['deskripsi']; ?>">
+                    <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label>Tanggal Mulai </label>

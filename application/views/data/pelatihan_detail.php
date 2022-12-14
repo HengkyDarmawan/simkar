@@ -30,6 +30,11 @@
             </div>
             <hr>
             <div class="row mb-3">
+                <div class="col-md-6 bold">Deskripsi Pelatihan</div>
+                <div class="col-md-6"><?= $pelatihan['deskripsi']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
                 <div class="col-md-6 bold">Sertifikat URL</div>
                 <div class="col-md-6"><?= $pelatihan['url']; ?></div>
             </div>

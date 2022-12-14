@@ -13,6 +13,8 @@ class Admin extends CI_Controller
 
         $data['user'] = $this->m_auth->getUserLogin();
         $data['title'] = "Dashboard";
+        $data['total_user'] = $this->m_admin->total_user();
+        $data['total_jabatan'] = $this->m_admin->total_jabatan();
 
         $this->load->view('template/header', $data);
         $this->load->view('admin/index', $data);

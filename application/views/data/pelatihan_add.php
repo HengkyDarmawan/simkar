@@ -11,9 +11,9 @@
         <div class="card-body" style="color: #000;">
             <form action="" method="post">
                 <div class="form-group">
-                    <label>Nama Karyawan</label>
+                    <label>Nama Pegawai</label>
                     <select class="form-control" name="user_id">
-                        <option value="">Select Karyawan</option>
+                        <option value="">Select Pegawai</option>
                         <?php foreach ($users as $user) : ?>
                             <option value="<?= $user['id']; ?>"><?= $user['name']; ?></option>
                         <?php endforeach; ?>
@@ -33,6 +33,11 @@
                     <label>lokasi Pelatihan</label>
                     <input type="text" name="lokasi_pelatihan" class="form-control">
                     <?= form_error('lokasi_pelatihan', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi Pelatihan</label>
+                    <input type="text" name="deskripsi" class="form-control">
+                    <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label>Tanggal Mulai </label>

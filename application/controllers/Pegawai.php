@@ -49,4 +49,22 @@ class Pegawai extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pegawai di Hapus !!!</div>');
         redirect('pegawai');
     }
+
+    public function detailPegawai()
+    {
+        $id = $this->uri->segment(3);
+
+        $data['title'] = 'Detail Pegawai';
+        $data['user'] = $this->m_auth->getUserLogin();
+        $data['pegawai'] = $this->m_user->getPegawaiByID($id);
+        $data['pengalaman'] = $this->m_user->getPengalamanById($id);
+        $data['pendidikan'] = $this->m_user->getPendidikanById($id);
+        $data['pelatihan'] = $this->m_user->getPelatihanById($id);
+        $data['seminar'] = $this->m_user->getSeminarById($id);
+        // var_dump($data['pendidikan']);
+
+        $this->load->view('template/header', $data);
+        $this->load->view('data/pegawai_detail', $data);
+        $this->load->view('template/footer');
+    }
 }

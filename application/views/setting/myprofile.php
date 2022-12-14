@@ -99,22 +99,6 @@
                 <div class="col-md-6 bold">Telepon</div>
                 <div class="col-md-6"><?= $user['telp']; ?></div>
             </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-6 bold">S1</div>
-                <div class="col-md-6"><?= $user['s1']; ?></div>
-            </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-6 bold">S2</div>
-                <div class="col-md-6"><?= $user['s2']; ?></div>
-            </div>
-            <hr>
-            <div class="row mb-3">
-                <div class="col-md-6 bold">S3</div>
-                <div class="col-md-6"><?= $user['s3']; ?></div>
-            </div>
-            <hr>
         </div>
     </div>
 </div>

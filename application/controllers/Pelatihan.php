@@ -3,11 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pelatihan extends CI_Controller
 {
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    //     is_logged_in();
-    // }
     public function index()
     {
         $data['title'] = "Data Pelatihan";
@@ -23,10 +18,11 @@ class Pelatihan extends CI_Controller
         $data['user'] = $this->m_auth->getUserLogin();
         $data['users'] = $this->m_user->getAllUser();
 
-        $this->form_validation->set_rules('user_id', 'Nama Karyawan', 'required');
+        $this->form_validation->set_rules('user_id', 'Nama Pegawai', 'required');
         $this->form_validation->set_rules('nama_pelatihan', 'Nama Pelatihan', 'required');
         $this->form_validation->set_rules('organisasi_penerbit', 'Organisasi Penerbit', 'required');
         $this->form_validation->set_rules('lokasi_pelatihan', 'Lokasi Pelatihan', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Pelatihan', 'required');
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_selesai', 'Tanggal Selesai', 'required');
         $this->form_validation->set_rules('url', 'URL', 'required');
@@ -60,6 +56,7 @@ class Pelatihan extends CI_Controller
         $this->form_validation->set_rules('nama_pelatihan', 'Nama Pelatihan', 'required');
         $this->form_validation->set_rules('organisasi_penerbit', 'Organisasi Penerbit', 'required');
         $this->form_validation->set_rules('lokasi_pelatihan', 'Lokasi Pelatihan', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Pelatihan', 'required');
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_selesai', 'Tanggal Selesai', 'required');
         $this->form_validation->set_rules('url', 'URL', 'required');
