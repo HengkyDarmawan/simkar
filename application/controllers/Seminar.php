@@ -25,6 +25,7 @@ class Seminar extends CI_Controller
         $this->form_validation->set_rules('lokasi_seminar', 'Lokasi Seminar', 'required');
         $this->form_validation->set_rules('tgl_seminar', 'Tanggal seminar', 'required');
         $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -58,6 +59,7 @@ class Seminar extends CI_Controller
         $this->form_validation->set_rules('lokasi_seminar', 'Lokasi Seminar', 'required');
         $this->form_validation->set_rules('tgl_seminar', 'Tanggal seminar', 'required');
         $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);

@@ -36,12 +36,26 @@
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Tanggal Seminar</div>
-                <div class="col-md-6"><?= $seminar['tgl_seminar']; ?></div>
+                <div class="col-md-6"><?= mediumdate_indo($seminar['tgl_seminar']); ?></div>
             </div>
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Sertifikat URL</div>
-                <div class="col-md-6"><?= $seminar['url']; ?></div>
+                <div class="col-md-6"><a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary btn-sm">Link</a></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Status</div>
+                <div class="col-md-6">
+                    <?php
+                    if ($seminar['status'] == "review") { ?>
+                        <span class="badge badge-pill badge-warning "><?= $seminar['status']; ?></span>
+                    <?php } else if ($seminar['status'] == "approved") { ?>
+                        <span class="badge badge-pill badge-success "><?= $seminar['status']; ?></span>
+                    <?php } else { ?>
+                        <span class="badge badge-pill badge-danger "><?= $seminar['status']; ?></span>
+                    <?php } ?>
+                </div>
             </div>
             <hr>
         </div>

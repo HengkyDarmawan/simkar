@@ -49,6 +49,15 @@
                     <input type="text" name="url" class="form-control">
                     <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" class="form-control">
+                        <option value="">- Pilih Status-</option>
+                        <option value="review">Review</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">rejected</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">add</button>
                 <a href="<?= base_url('seminar'); ?>" class="btn btn-danger">Cancel</a>
             </form>

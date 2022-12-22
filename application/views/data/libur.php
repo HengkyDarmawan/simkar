@@ -11,7 +11,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
-                <a href="<?= base_url('pegawai/addpegawai'); ?>" class="btn btn-outline-primary btn-md">Add New Pegawai</a>
+                <a href="<?= base_url('libur/addLibur'); ?>" class="btn btn-outline-primary btn-md">Add New Libur</a>
             </div>
 
         </div>
@@ -21,32 +21,32 @@
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
-                            <th>NIK Karyawan</th>
-                            <th>Nama</th>
-                            <th>Email</th>
+                            <th>Tanggal Mulai Libur</th>
+                            <th>Tanggal Akhir Libur</th>
+                            <th>Keterangan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot class="text-center">
                         <tr>
                             <th>#</th>
-                            <th>NIK Karyawan</th>
-                            <th>Nama</th>
-                            <th>Email</th>
+                            <th>Tanggal Mulai Libur</th>
+                            <th>Tanggal Akhir Libur</th>
+                            <th>Keterangan</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
                         <?php $i = 1; ?>
-                        <?php foreach ($users as $pegawai) : ?>
+                        <?php foreach ($libur as $lib) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $pegawai['nik_karyawan']; ?></td>
-                                <td><?= $pegawai['name']; ?></td>
-                                <td><?= $pegawai['email_undira']; ?></td>
+                                <td><?= mediumdate_indo($lib['tgl_mulai']); ?></td>
+                                <td><?= mediumdate_indo($lib['tgl_akhir']); ?></td>
+                                <td><?= $lib['keterangan']; ?></td>
                                 <td>
-                                    <a href="<?= base_url(); ?>pegawai/detailpegawai/<?= $pegawai['id']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
-                                    <a href="<?= base_url(); ?>pegawai/hapuspegawai/<?= $pegawai['id']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>
+                                    <a href="<?= base_url(); ?>libur/editlibur/<?= $lib['id_libur']; ?>" class="btn btn-outline-success btn-sm">Edit</a>
+                                    <a href="<?= base_url(); ?>libur/hapuslibur/<?= $lib['id_libur']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('yakin?');">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -23,14 +23,31 @@ class Pegawai extends CI_Controller
         $data['title'] = "Add Data Pegawai";
         $data['user'] = $this->m_auth->getUserLogin();
         $data['users'] = $this->m_user->getAllUser();
+        $data['jabatan'] = $this->m_user->getJabatan();
+        $data['role'] = $this->m_user->getRole();
 
-        // $this->form_validation->set_rules('user_id', 'Nama Karyawan', 'required');
-        // $this->form_validation->set_rules('nama_pelatihan', 'Nama Pelatihan', 'required');
-        // $this->form_validation->set_rules('organisasi_penerbit', 'Organisasi Penerbit', 'required');
-        // $this->form_validation->set_rules('lokasi_pelatihan', 'Lokasi Pelatihan', 'required');
-        // $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
-        // $this->form_validation->set_rules('tgl_selesai', 'Tanggal Selesai', 'required');
-        // $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('name', 'Nama Pegawai', 'required');
+        $this->form_validation->set_rules('jabatan_id', 'Jabatan', 'required');
+        $this->form_validation->set_rules('address', 'Alamat', 'required');
+        $this->form_validation->set_rules('tmpt_lahir', 'Tempat Lahir', 'required');
+        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('nik_ktp', 'NIK KTP', 'required');
+        $this->form_validation->set_rules('nik_karyawan', 'NIK Pegawai', 'required');
+        $this->form_validation->set_rules('nama_bank', 'Bank', 'required');
+        $this->form_validation->set_rules('no_rek', 'Nomor Rekening', 'required');
+        $this->form_validation->set_rules('npwp', 'NPWP', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('email_undira', 'Email Undira', 'required');
+        $this->form_validation->set_rules('telp', 'No.Hp', 'required');
+        $this->form_validation->set_rules('no_bpjs_kesehatan', 'No BPJS Kesehatan', 'required');
+        $this->form_validation->set_rules('no_bpjs_ketenagakerjaan', 'No BPJS Ketenagakerjaan', 'required');
+        // $this->form_validation->set_rules('image', 'Image', 'required');
+        // $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('role_id', 'Role', 'required');
+        $this->form_validation->set_rules('is_active', 'Active', 'required');
+        $this->form_validation->set_rules('tgl_bergabung', 'Tanggal Bergabung', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);

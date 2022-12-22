@@ -50,8 +50,8 @@
                                 <td><?= $pendidik['jurusan']; ?>
                                     <br><strong>(<?= $pendidik['universitas']; ?>)</strong>
                                 </td>
-                                <td><?= $pendidik['tgl_mulai']; ?></td>
-                                <td><?= $pendidik['tgl_lulus']; ?></td>
+                                <td><?= mediumdate_indo($pendidik['tgl_mulai']); ?></td>
+                                <td><?= mediumdate_indo($pendidik['tgl_lulus']); ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>pendidikan/detailpendidikan/<?= $pendidik['id_pendidikan']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
                                     <a href="<?= base_url(); ?>pendidikan/hapuspendidikan/<?= $pendidik['id_pendidikan']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>

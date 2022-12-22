@@ -25,6 +25,8 @@
                             <th>Nama Seminar</th>
                             <th>Lokasi Seminar</th>
                             <th>Tanggal Seminar</th>
+                            <th>Status</th>
+                            <th>Sertifikat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,6 +37,8 @@
                             <th>Nama Seminar</th>
                             <th>Lokasi Seminar</th>
                             <th>Tanggal Seminar</th>
+                            <th>Status</th>
+                            <th>Sertifikat</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -46,7 +50,20 @@
                                 <td><?= $seminar['name']; ?></td>
                                 <td><?= $seminar['nama_seminar']; ?></td>
                                 <td><?= $seminar['lokasi_seminar']; ?></td>
-                                <td><?= $seminar['tgl_seminar']; ?></td>
+                                <td><?= mediumdate_indo($seminar['tgl_seminar']); ?></td>
+                                <td>
+                                    <?php
+                                    if ($seminar['status'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $seminar['status']; ?></span>
+                                    <?php } else if ($seminar['status'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $seminar['status']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $seminar['status']; ?></span>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary btn-sm">Link</a>
+                                </td>
                                 <td>
                                     <a href="<?= base_url(); ?>seminar/detailseminar/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
                                     <a href="<?= base_url(); ?>seminar/hapusseminar/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>

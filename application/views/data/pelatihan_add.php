@@ -54,10 +54,14 @@
                     <input type="text" name="url" class="form-control">
                     <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
-                <div class="form-group" hidden>
+                <div class="form-group">
                     <label>Status</label>
-                    <input type="text" name="status" value="proses" class="form-control" placeholder="Status" readonly>
-                    <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <select name="status" class="form-control">
+                        <option value="">- Pilih Status-</option>
+                        <option value="review">Review</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">rejected</option>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">add</button>
                 <a href="<?= base_url('pelatihan'); ?>" class="btn btn-danger">Cancel</a>

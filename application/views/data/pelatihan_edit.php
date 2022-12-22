@@ -57,8 +57,22 @@
                 </div>
                 <div class="form-group">
                     <label>Status</label>
-                    <input type="text" name="status" value="<?= $pelatihan['status']; ?>" class="form-control" value="<?= $pelatihan['status']; ?>" placeholder="Status">
-                    <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <select name="status" class="form-control">
+                        <?php
+                        if ($pelatihan['status'] == "review") { ?>
+                            <option value="review" selected>Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else if ($pelatihan['status'] == "approved") { ?>
+                            <option value="review">Review</option>
+                            <option value="approved" selected>Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else { ?>
+                            <option value="review">Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected" selected>Rejected</option>
+                        <?php } ?>
+                    </select>
                 </div>
                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                 <a href="<?= base_url('pelatihan'); ?>" class="btn btn-danger">Cancel</a>

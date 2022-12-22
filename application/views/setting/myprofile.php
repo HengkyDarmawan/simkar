@@ -92,7 +92,7 @@
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Tanggal Lahir</div>
-                <div class="col-md-6"><?= $user['tgl_lahir']; ?></div>
+                <div class="col-md-6"><?= mediumdate_indo($user['tgl_lahir']); ?></div>
             </div>
             <hr>
             <div class="row mb-3">

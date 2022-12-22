@@ -18,7 +18,7 @@
                             <?= form_error('nik_ktp', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col">
-                            <label>NIK Karyawan</label>
+                            <label>NIK Pegawai</label>
                             <input type="text" name="nik_karyawan" class="form-control">
                             <?= form_error('nik_karyawan', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
@@ -28,6 +28,20 @@
                     <label>Nama Pegawai</label>
                     <input type="text" name="name" class="form-control">
                     <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label>Email Pribadi</label>
+                            <input type="text" name="email" class="form-control">
+                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col">
+                            <label>Email Undira</label>
+                            <input type="text" name="email_undira" class="form-control">
+                            <?= form_error('email_undira', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -46,39 +60,103 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
-                            <label>Email Pribadi</label>
-                            <input type="text" name="email" class="form-control">
-                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label>Agama</label>
+                            <input type="text" name="agama" class="form-control">
+                            <?= form_error('agama', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col">
-                            <label>Email Undira</label>
-                            <input type="text" name="email_undira" class="form-control">
-                            <?= form_error('email_undira', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label>Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="form-control">
+                                <option value="">- Pilih -</option>
+                                <option value="pria">Pria</option>
+                                <option value="wanita">Wanita</option>
+                            </select>
+                            <?= form_error('jenis_kelamin', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Tanggal Mulai </label>
-                    <input type="date" name="tgl_mulai" class="form-control">
-                    <?= form_error('tgl_mulai', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <div class="row">
+                        <div class="col">
+                            <label>Alamat</label>
+                            <input type="text" name="address" class="form-control">
+                            <?= form_error('address', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col">
+                            <label>Nomor Telpon (WA)</label>
+                            <input type="text" name="telp" class="form-control">
+                            <?= form_error('telp', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label>Tanggal Selesai</label>
-                    <input type="date" name="tgl_selesai" class="form-control">
-                    <?= form_error('tgl_selesai', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <label>Jabatan</label>
+                    <select class="form-control" name="jabatan_id">
+                        <option value="">Select Jabatan</option>
+                        <?php foreach ($jabatan as $jab) : ?>
+                            <option value="<?= $jab['id_jabatan']; ?>"><?= $jab['jabatan']; ?></option>
+                        <?php endforeach; ?>
+                        <?= form_error('jabatan_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label>URL Sertifikat</label>
-                    <input type="text" name="url" class="form-control">
-                    <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <div class="row">
+                        <div class="col">
+                            <label>Bank</label>
+                            <input type="text" name="nama_bank" class="form-control">
+                            <?= form_error('nama_bank', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col">
+                            <label>Nomor Rekening</label>
+                            <input type="text" name="no_rek" class="form-control">
+                            <?= form_error('no_rek', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group" hidden>
-                    <label>Status</label>
-                    <input type="text" name="status" value="proses" class="form-control" placeholder="Status" readonly>
-                    <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
+                <div class="form-group">
+                    <label>NPWP</label>
+                    <input type="text" name="npwp" class="form-control">
+                    <?= form_error('npwp', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label>No BPJS Kesehatan</label>
+                            <input type="text" name="no_bpjs_kesehatan" class="form-control">
+                            <?= form_error('no_bpjs_kesehatan', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col">
+                            <label>No BPJS Ketenagakerjaan</label>
+                            <input type="text" name="no_bpjs_ketenagakerjaan" class="form-control">
+                            <?= form_error('no_bpjs_ketenagakerjaan', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label>Password</label>
+                    <input type="text" name="password" class="form-control">
+                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div> -->
+                <div class="form-group">
+                    <label>Role</label>
+                    <select class="form-control" name="role_id">
+                        <option value="">Select role</option>
+                        <?php foreach ($role as $rol) : ?>
+                            <option value="<?= $rol['id']; ?>"><?= $rol['role']; ?></option>
+                        <?php endforeach; ?>
+                        <?= form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" name="is_active" id="is_active" checked>
+                        <label class="form-check-label" for="is_active">
+                            Active?
+                        </label>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">add</button>
-                <a href="<?= base_url('pelatihan'); ?>" class="btn btn-danger">Cancel</a>
+                <a href="<?= base_url('pegawai'); ?>" class="btn btn-danger">Cancel</a>
             </form>
         </div>
     </div>

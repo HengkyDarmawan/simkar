@@ -10,7 +10,7 @@ class Pengalaman extends CI_Controller
     // }
     public function index()
     {
-        $data['title'] = "Data pengalaman";
+        $data['title'] = "Data Pengalaman";
         $data['user'] = $this->m_auth->getUserLogin();
         $data['pengalaman'] = $this->m_pengalaman->getAllPengalaman();
         $this->load->view('template/header', $data);

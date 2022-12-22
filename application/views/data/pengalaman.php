@@ -50,8 +50,8 @@
                                 <td><?= $penga['name']; ?></td>
                                 <td><?= $penga['nama_perusahaan']; ?></td>
                                 <td><?= $penga['jabatan']; ?></td>
-                                <td><?= $penga['tgl_mulai']; ?></td>
-                                <td><?= $penga['tgl_berakhir']; ?></td>
+                                <td><?= mediumdate_indo($penga['tgl_mulai']); ?></td>
+                                <td><?= mediumdate_indo($penga['tgl_berakhir']); ?></td>
                                 <td><?= $penga['alasan_berhenti']; ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>pengalaman/detailpengalaman/<?= $penga['id_pengalaman']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>

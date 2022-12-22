@@ -36,26 +36,26 @@
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Sertifikat URL</div>
-                <div class="col-md-6"><?= $pelatihan['url']; ?></div>
+                <div class="col-md-6"><a href="<?= $pelatihan['url']; ?>" class="btn btn-outline-primary btn-sm">Link</a></div>
             </div>
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Tanggal Mulai</div>
-                <div class="col-md-6"><?= $pelatihan['tgl_mulai']; ?></div>
+                <div class="col-md-6"><?= mediumdate_indo($pelatihan['tgl_mulai']); ?></div>
             </div>
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Tanggal Selesai</div>
-                <div class="col-md-6"><?= $pelatihan['tgl_selesai']; ?></div>
+                <div class="col-md-6"><?= mediumdate_indo($pelatihan['tgl_mulai']); ?></div>
             </div>
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Status</div>
                 <div class="col-md-6">
                     <?php
-                    if ($pelatihan['status'] == "proses") { ?>
+                    if ($pelatihan['status'] == "review") { ?>
                         <span class="badge badge-pill badge-warning "><?= $pelatihan['status']; ?></span>
-                    <?php } else if ($pelatihan['status'] == "active") { ?>
+                    <?php } else if ($pelatihan['status'] == "approved") { ?>
                         <span class="badge badge-pill badge-success "><?= $pelatihan['status']; ?></span>
                     <?php } else { ?>
                         <span class="badge badge-pill badge-danger "><?= $pelatihan['status']; ?></span>

@@ -18,6 +18,9 @@
         </div>
         <div class="card-body">
             <div class="row mb-3">
+                <img src="<?= base_url('assets/img/profile/') . $pegawai['image']; ?>" alt="..." class="img-fluid" style="height: 100%;">
+            </div>
+            <div class="row mb-3">
                 <div class="col-md-6 bold">Nomor Pegawai</div>
                 <div class="col-md-6"><?= $pegawai['nik_karyawan']; ?></div>
             </div>
@@ -46,7 +49,7 @@
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Tempat & Tanggal Lahir</div>
-                <div class="col-md-6"><?= $pegawai['tmpt_lahir']; ?>, <?= $pegawai['tgl_lahir']; ?></div>
+                <div class="col-md-6"><?= $pegawai['tmpt_lahir']; ?>, <?= mediumdate_indo($pegawai['tgl_lahir']); ?></div>
             </div>
             <hr>
             <div class="row mb-3">
@@ -67,6 +70,11 @@
             <div class="row mb-3">
                 <div class="col-md-6 bold">Agama</div>
                 <div class="col-md-6"><?= $pegawai['agama']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Nama Bank</div>
+                <div class="col-md-6"><?= $pegawai['nama_bank']; ?></div>
             </div>
             <hr>
             <div class="row mb-3">
@@ -91,7 +99,7 @@
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Tanggal Mulai Berkerja</div>
-                <div class="col-md-6"><?= $pegawai['tgl_bergabung']; ?></div>
+                <div class="col-md-6"><?= mediumdate_indo($pegawai['tgl_bergabung']); ?></div>
             </div>
             <hr>
             <div class="row mb-3">
@@ -152,8 +160,9 @@
                                 <td><?= $pen['jurusan']; ?>
                                     <br><strong>(<?= $pen['universitas']; ?>)</strong>
                                 </td>
-                                <td><?= $pen['tgl_mulai']; ?></td>
-                                <td><?= $pen['tgl_lulus']; ?></td>
+                                <td><?= mediumdate_indo($pen['tgl_mulai']); ?></td>
+
+                                <td><?= mediumdate_indo($pen['tgl_lulus']); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -208,8 +217,8 @@
                                 <td><?= $i++; ?></td>
                                 <td><?= $penga['nama_perusahaan']; ?></td>
                                 <td><?= $penga['jabatan']; ?></td>
-                                <td><?= $penga['tgl_mulai']; ?></td>
-                                <td><?= $penga['tgl_berakhir']; ?></td>
+                                <td><?= mediumdate_indo($penga['tgl_mulai']); ?></td>
+                                <td><?= mediumdate_indo($penga['tgl_berakhir']); ?></td>
                                 <td><?= $penga['alasan_berhenti']; ?></td>
                             </tr>
                         <?php endforeach; ?>
@@ -273,10 +282,12 @@
                                 </td>
                                 <td><?= $pel['deskripsi']; ?></td>
                                 <td><?= $pel['lokasi_pelatihan']; ?></td>
-                                <td><?= $pel['tgl_mulai']; ?></td>
-                                <td><?= $pel['tgl_selesai']; ?></td>
+                                <td><?= mediumdate_indo($pel['tgl_mulai']); ?></td>
+                                <td><?= mediumdate_indo($pel['tgl_selesai']); ?></td>
                                 <td><?= $pel['status']; ?></td>
-                                <td><?= $pel['url']; ?></td>
+                                <td>
+                                    <a href="<?= $pel['url']; ?>" class="btn btn-outline-primary">Link</a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -335,8 +346,10 @@
                                 </td>
                                 <td><?= $seminar['deskripsi_seminar']; ?></td>
                                 <td><?= $seminar['lokasi_seminar']; ?></td>
-                                <td><?= $seminar['tgl_seminar']; ?></td>
-                                <td><?= $seminar['url']; ?></td>
+                                <td><?= mediumdate_indo($seminar['tgl_seminar']); ?></td>
+                                <td>
+                                    <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary">Link</a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

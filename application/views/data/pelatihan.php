@@ -26,6 +26,7 @@
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Status</th>
+                            <th>Sertifikat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -37,6 +38,7 @@
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Status</th>
+                            <th>Sertifikat</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -49,21 +51,23 @@
                                 <td><?= $pel['nama_pelatihan']; ?>
                                     <br><strong>(<?= $pel['organisasi_penerbit']; ?>)</strong>
                                 </td>
-                                <td><?= $pel['tgl_mulai']; ?></td>
-                                <td><?= $pel['tgl_selesai']; ?></td>
+                                <td><?= mediumdate_indo($pel['tgl_mulai']); ?></td>
+                                <td><?= mediumdate_indo($pel['tgl_selesai']); ?></td>
                                 <td>
                                     <?php
-                                    if ($pel['status'] == "proses") { ?>
+                                    if ($pel['status'] == "review") { ?>
                                         <span class="badge badge-pill badge-warning "><?= $pel['status']; ?></span>
-                                    <?php } else if ($pel['status'] == "active") { ?>
+                                    <?php } else if ($pel['status'] == "approved") { ?>
                                         <span class="badge badge-pill badge-success "><?= $pel['status']; ?></span>
                                     <?php } else { ?>
                                         <span class="badge badge-pill badge-danger "><?= $pel['status']; ?></span>
                                     <?php } ?>
                                 </td>
                                 <td>
+                                    <a href="<?= $pel['url']; ?>" class="btn btn-outline-primary btn-sm">Link</a>
+                                </td>
+                                <td>
                                     <a href="<?= base_url(); ?>pelatihan/detailpelatihan/<?= $pel['id_pelatihan']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
-                                    <!-- <a href="<?= base_url(); ?>pelatihan/editpelatihan/<?= $pel['id_pelatihan']; ?>" class="btn btn-outline-success btn-sm my-2">Edit</a> -->
                                     <a href="<?= base_url(); ?>pelatihan/hapuspelatihan/<?= $pel['id_pelatihan']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>
                                 </td>
                             </tr>

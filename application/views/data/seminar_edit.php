@@ -50,6 +50,25 @@
                     <input type="text" name="url" class="form-control" value="<?= $seminar['url']; ?>">
                     <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" class="form-control">
+                        <?php
+                        if ($seminar['status'] == "review") { ?>
+                            <option value="review" selected>Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else if ($seminar['status'] == "approved") { ?>
+                            <option value="review">Review</option>
+                            <option value="approved" selected>Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else { ?>
+                            <option value="review">Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected" selected>Rejected</option>
+                        <?php } ?>
+                    </select>
+                </div>
                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                 <a href="<?= base_url('seminar'); ?>" class="btn btn-danger">Cancel</a>
             </form>

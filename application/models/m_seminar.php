@@ -19,7 +19,8 @@ class M_seminar extends CI_Model
             "organisasi_pelaksana" => $this->input->post('organisasi_pelaksana', true),
             "lokasi_seminar" => $this->input->post('lokasi_seminar', true),
             "tgl_seminar" => $this->input->post('tgl_seminar', true),
-            "url" => $this->input->post('url', true)
+            "url" => $this->input->post('url', true),
+            "status" => $this->input->post('status', true)
         ];
         $this->db->insert('master_seminar', $data);
     }
@@ -43,7 +44,8 @@ class M_seminar extends CI_Model
             "organisasi_pelaksana" => $this->input->post('organisasi_pelaksana', true),
             "lokasi_seminar" => $this->input->post('lokasi_seminar', true),
             "tgl_seminar" => $this->input->post('tgl_seminar', true),
-            "url" => $this->input->post('url', true)
+            "url" => $this->input->post('url', true),
+            "status" => $this->input->post('status', true)
         ];
         $this->db->where('id_seminar', $this->input->post('id_seminar'));
         $this->db->update('master_seminar', $data);
