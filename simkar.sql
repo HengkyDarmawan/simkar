@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2022 at 01:44 AM
+-- Generation Time: Jan 12, 2023 at 02:53 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -177,9 +177,16 @@ INSERT INTO `master_jurusan` (`id`, `jurusan`) VALUES
 CREATE TABLE `master_kelompok_jabatan` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `jabatan_id` int(11) NOT NULL,
-  `kelompok` int(11) NOT NULL
+  `kelompok_jabatan` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `master_kelompok_jabatan`
+--
+
+INSERT INTO `master_kelompok_jabatan` (`id`, `user_id`, `kelompok_jabatan`) VALUES
+(1, 1, '1.1.1.2'),
+(2, 2, '1.0.0.3');
 
 -- --------------------------------------------------------
 
@@ -263,20 +270,24 @@ CREATE TABLE `master_pendidikan` (
   `jurusan` varchar(128) NOT NULL,
   `universitas` varchar(128) NOT NULL,
   `alamat_univ` text NOT NULL,
-  `tgl_mulai` date NOT NULL,
-  `tgl_lulus` date NOT NULL
+  `judul_skripsi` varchar(128) NOT NULL,
+  `nama_dospem` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `tgl_mulai` date NOT NULL DEFAULT current_timestamp(),
+  `tgl_lulus` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `master_pendidikan`
 --
 
-INSERT INTO `master_pendidikan` (`id_pendidikan`, `user_id`, `tingkat_pendidikan`, `jurusan`, `universitas`, `alamat_univ`, `tgl_mulai`, `tgl_lulus`) VALUES
-(1, 1, 'S1', 'Teknik Informatika', 'Universitas Dian Nusantara', 'Grogol', '2019-10-01', '2023-10-01'),
-(2, 1, 'S2', 'Teknik Informatika', 'ITB', 'Bandung', '2023-12-01', '2025-12-01'),
-(4, 3, 'S2', 'Ekonomi', 'ITB', 'Depok', '2022-12-02', '2022-12-30'),
-(5, 4, 'S1', 'Teknik Informasi', 'Universitas Indonesia', 'Depok', '2017-01-01', '2024-01-30'),
-(6, 5, 'S1', 'Sastra Inggris', 'Universitas Gajah Mada', 'Yogyakarta', '2017-10-02', '2020-11-18');
+INSERT INTO `master_pendidikan` (`id_pendidikan`, `user_id`, `tingkat_pendidikan`, `jurusan`, `universitas`, `alamat_univ`, `judul_skripsi`, `nama_dospem`, `url`, `tgl_mulai`, `tgl_lulus`) VALUES
+(1, 1, 'S1', 'Teknik Informatika', 'Universitas Dian Nusantara', 'Grogol', 'E-Commerce', 'Giri', 'https://www.google.com/', '2013-01-01', '2017-01-31'),
+(2, 1, 'S2', 'Teknik Informatika', 'ITB', 'Bandung', 'HRIS', 'Desi', 'https://www.google.com/', '2023-01-12', '2018-01-31'),
+(4, 3, 'S2', 'Ekonomi', 'ITB', 'Depok', 'Investasi', 'Andi', 'https://www.google.com/', '2015-07-01', '2019-12-31'),
+(5, 4, 'S1', 'Teknik Informasi', 'Universitas Indonesia', 'Depok', 'Company Profile', 'Henri', 'https://www.google.com/', '2018-01-01', '2023-01-12'),
+(6, 5, 'S1', 'Sastra Inggris', 'Universitas Gajah Mada', 'Yogyakarta', 'An Analysis of Symbols in Toba Batak Traditional House', 'Siti', 'https://www.google.com/', '2016-01-08', '2022-01-14'),
+(7, 3, 'S3', 'Teknik Mesin', 'Universitas Gajah Mada', 'bandung', 'cara mudah membuat mesin', 'Yusuf', 'https://puslit.mercubuana.ac.id/', '2021-11-01', '2024-12-31');
 
 -- --------------------------------------------------------
 
@@ -303,7 +314,7 @@ CREATE TABLE `master_seminar` (
 INSERT INTO `master_seminar` (`id_seminar`, `user_id`, `nama_seminar`, `deskripsi_seminar`, `organisasi_pelaksana`, `lokasi_seminar`, `tgl_seminar`, `url`, `status`) VALUES
 (1, 1, 'LINE TO UI/UX DESIGN', 'Have you ever wondered why some platforms are more demanding than the other? Or how can users be loyal to some products or brands? No worries! We’re gonna give you an exciting event which may answer some of your questions! ????Introducing : Find Your Line to UI/UX Design with Kak Gregorius Willy Adiguno! ????We’re here to dive deep into the world of UI UX Design with which will be held And what’s more exciting is that all participants will receive free access to Dicoding Course! ????What are you waiting for! Register yourself now!', 'dicodings', 'Online', '2022-12-09', 'https://fontawesome.com/', 'approved'),
 (2, 3, 'tes', 'tes', 'tes', 'online', '2022-12-15', 'https://translate.google.com/', 'review'),
-(5, 4, 's', 's', 's', 's', '2022-12-02', 's', 'rejected'),
+(5, 4, 's', 's', 's', 's', '2022-12-02', 's', 'approved'),
 (6, 5, 'sa', 'sa', 'sa', 'sa', '2021-12-01', 'sa', 'rejected');
 
 -- --------------------------------------------------------
@@ -371,6 +382,7 @@ CREATE TABLE `user` (
   `telp` varchar(12) NOT NULL,
   `no_bpjs_kesehatan` bigint(13) NOT NULL,
   `no_bpjs_ketenagakerjaan` bigint(11) NOT NULL,
+  `jenis_pegawai` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
   `role_id` int(11) NOT NULL,
@@ -383,11 +395,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`) VALUES
-(1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Laki-laki', 'Buddha', 3174092505520003, 1100000000011, 'BCA', 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 1234567, 123456789, 'default.png', '$2y$10$ojaaWuHiz1Lc.8.vAs5qZu7lPXwvCj5YsIqQ0StBObS9mHbMXh/UG', 1, 1, '2022-12-13', 20211102),
-(3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 0, 1100000000013, 'Mandiri', 0, '0', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', 0, 0, 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, '2019-12-13', 101022),
-(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Laki-laki', 'Islam', 0, 1100000000010, 'Mandiri', 0, '0', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', 0, 0, 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', 1112),
-(5, 'tes', 2, 'Jakarta Selatan, Indonesia', 'Surabaya', '1995-11-02', '', '', 123, 123, 'BRI', 123, '1321', 'tes@gmail.com', 'hengkycross172@gmail.com', '089659172255', 1213, 1321, 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-10', 11111);
+INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`) VALUES
+(1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 3174092505520003, 1100000000011, 'BCA', 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 1234567, 123456789, 'tendik', 'default.png', '$2y$10$ojaaWuHiz1Lc.8.vAs5qZu7lPXwvCj5YsIqQ0StBObS9mHbMXh/UG', 1, 1, '2022-12-13', 20211102),
+(3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 1234, 1100000000013, 'Mandiri', 654654654, '12.345.678.9-101.013', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', 6546544, 747444121, 'dosen tetap', 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, '2019-12-13', 101022),
+(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Pria', 'Islam', 56464, 1100000000010, 'Mandiri', 65644452545, '12.345.678.9-101.014', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', 44443313, 8797741, 'dosen tidak tetap', 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', 1112),
+(5, 'tes', 2, 'Jakarta Selatan, Indonesia', 'Surabaya', '1995-11-02', 'Pria', 'Kristen', 123, 123, 'BRI', 123, '12.345.678.9-101.015', 'tes@gmail.com', 'hengkycross172@gmail.com', '089659172255', 1213, 1321, 'pegawai tetap', 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-10', 11111);
 
 -- --------------------------------------------------------
 
@@ -411,15 +423,20 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (6, 3, 3),
 (17, 1, 4),
 (23, 2, 17),
-(24, 3, 16),
 (25, 3, 17),
 (27, 1, 18),
 (28, 2, 18),
 (29, 3, 18),
-(32, 1, 12),
 (33, 1, 17),
 (38, 1, 20),
-(40, 2, 12);
+(41, 1, 12),
+(42, 2, 21),
+(43, 2, 6),
+(44, 2, 12),
+(45, 3, 6),
+(46, 3, 7),
+(47, 2, 7),
+(48, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -442,6 +459,8 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (3, 'User'),
 (4, 'Menu'),
 (5, 'Laporan'),
+(6, 'Absensi'),
+(7, 'Gaji'),
 (12, 'Master Data'),
 (16, 'Sertifikat'),
 (18, 'Setting');
@@ -487,8 +506,8 @@ CREATE TABLE `user_sub_menu` (
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (1, 1, 'Dashboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
-(2, 2, 'Dashboard Staf', 'staf/index', 'fas fa-fw fa-tachometer-alt', 1),
-(3, 3, 'User', 'user', 'fas fa-fw fa-tachometer-alt', 1),
+(2, 2, 'Dashboard', 'staf/index', 'fas fa-fw fa-tachometer-alt', 1),
+(3, 3, 'Dashboard', 'user', 'fas fa-fw fa-tachometer-alt', 1),
 (5, 4, 'Menu Management', 'menu', 'far fa-fw fa-folder', 1),
 (6, 4, 'Sub Menu Management', 'menu/submenu', 'far fa-fw fa-folder-open', 1),
 (13, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-check', 1),
@@ -501,7 +520,10 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (22, 12, 'Data Pelatihan', 'pelatihan/index', 'fas fa-fw fa-chalkboard-teacher', 1),
 (23, 12, 'Data Seminar', 'seminar', 'fas fa-fw fa-laptop', 1),
 (30, 12, 'Data Pengalaman', 'pengalaman', 'fas fa-fw fa-laptop-house', 1),
-(31, 12, 'Data Libur', 'libur', 'fas fa-fw fa-calendar-week', 1);
+(31, 12, 'Data Libur', 'libur', 'fas fa-fw fa-calendar-week', 1),
+(32, 7, 'Slip Gaji', 'gaji/slip', 'fas fa-fw fa-wallet', 1),
+(33, 12, 'Data Staf', 'staf/pegawai', 'fas fa-fw fa-users', 1),
+(34, 6, 'Rekap Absen', 'absensi', 'fas fa-fw fa-user-check', 1);
 
 -- --------------------------------------------------------
 
@@ -684,7 +706,7 @@ ALTER TABLE `master_jurusan`
 -- AUTO_INCREMENT for table `master_kelompok_jabatan`
 --
 ALTER TABLE `master_kelompok_jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `master_libur`
@@ -708,7 +730,7 @@ ALTER TABLE `master_parent_jabatan`
 -- AUTO_INCREMENT for table `master_pendidikan`
 --
 ALTER TABLE `master_pendidikan`
-  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `master_seminar`
@@ -738,13 +760,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -756,7 +778,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `user_token`

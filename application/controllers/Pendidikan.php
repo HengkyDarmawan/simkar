@@ -29,6 +29,9 @@ class Pendidikan extends CI_Controller
         $this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
         $this->form_validation->set_rules('universitas', 'Universitas', 'required');
         $this->form_validation->set_rules('alamat_univ', 'Alamat Universitas', 'required');
+        $this->form_validation->set_rules('judul_skripsi', 'Judul Skripsi', 'required');
+        $this->form_validation->set_rules('nama_dospem', 'Nama Dosen Pembimbing', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_lulus', 'Tanggal Selesai', 'required');
 
@@ -62,6 +65,9 @@ class Pendidikan extends CI_Controller
         $this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
         $this->form_validation->set_rules('universitas', 'Universitas', 'required');
         $this->form_validation->set_rules('alamat_univ', 'Alamat Universitas', 'required');
+        $this->form_validation->set_rules('judul_skripsi', 'Judul Skripsi', 'required');
+        $this->form_validation->set_rules('nama_dospem', 'Nama Dosen Pembimbing', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_lulus', 'Tanggal Selesai', 'required');
 

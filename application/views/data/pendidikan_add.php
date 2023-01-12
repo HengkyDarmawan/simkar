@@ -21,8 +21,16 @@
                 </div>
                 <div class="form-group">
                     <label>Tingkat Pendidikan</label>
-                    <input type="text" name="tingkat_pendidikan" class="form-control">
-                    <?= form_error('tingkat_pendidikan', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <select name="tingkat_pendidikan" class="form-control">
+                        <option value="">- Pilih Tingkat Pendidikan -</option>
+                        <option value="D1">D1</option>
+                        <option value="D2">D2</option>
+                        <option value="D3">D3</option>
+                        <option value="D4">D4</option>
+                        <option value="S1">S1</option>
+                        <option value="S2">S2</option>
+                        <option value="S3">S3</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Jurusan</label>
@@ -38,6 +46,21 @@
                     <label>Alamat Universitas</label>
                     <input type="text" name="alamat_univ" class="form-control">
                     <?= form_error('alamat_univ', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Judul Skripsi</label>
+                    <input type="text" name="judul_skripsi" class="form-control">
+                    <?= form_error('judul_skripsi', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Nama Dosen Pembimbing</label>
+                    <input type="text" name="nama_dospem" class="form-control">
+                    <?= form_error('nama_dospem', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="text" name="url" class="form-control">
+                    <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label>Tanggal Mulai </label>

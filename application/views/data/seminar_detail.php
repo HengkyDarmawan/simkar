@@ -41,7 +41,9 @@
             <hr>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Sertifikat URL</div>
-                <div class="col-md-6"><a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary btn-sm">Link</a></div>
+                <div class="col-md-6">
+                    <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Link</a>
+                </div>
             </div>
             <hr>
             <div class="row mb-3">

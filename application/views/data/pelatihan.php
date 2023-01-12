@@ -64,7 +64,7 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <a href="<?= $pel['url']; ?>" class="btn btn-outline-primary btn-sm">Link</a>
+                                    <a href="<?= $pel['url']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Link</a>
                                 </td>
                                 <td>
                                     <a href="<?= base_url(); ?>pelatihan/detailpelatihan/<?= $pel['id_pelatihan']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>

@@ -62,7 +62,7 @@
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary btn-sm">Link</a>
+                                    <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Link</a>
                                 </td>
                                 <td>
                                     <a href="<?= base_url(); ?>seminar/detailseminar/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>

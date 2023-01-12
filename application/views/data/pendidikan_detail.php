@@ -35,6 +35,23 @@
             </div>
             <hr>
             <div class="row mb-3">
+                <div class="col-md-6 bold">Judul Skripsi</div>
+                <div class="col-md-6"><?= $pendidikan['judul_skripsi']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Nama Dosen Pembimbing</div>
+                <div class="col-md-6"><?= $pendidikan['nama_dospem']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Url</div>
+                <div class="col-md-6">
+                    <a href="<?= $pendidikan['url']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Link</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row mb-3">
                 <div class="col-md-6 bold">Tanggal Mulai</div>
                 <div class="col-md-6"><?= $pendidikan['tgl_mulai']; ?></div>
             </div>

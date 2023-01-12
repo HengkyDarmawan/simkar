@@ -63,6 +63,212 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 
+<!-- pie chart js -->
+<script>
+    // Pie Chart Example
+    var ctx = document.getElementById("myPieChart");
+    var myPieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["Pria", "Perempuan"],
+        datasets: [{
+        data: [<?= $total_pria;?>, <?= $total_perempuan;?>],
+        backgroundColor: ['#4e73df', '#c0504d'],
+        hoverBackgroundColor: ['#2e59d9', '#ff2f15'],
+        hoverBorderColor: "rgba(234, 236, 244, 1)",
+        }],
+    },
+    options: {
+        maintainAspectRatio: false,
+        tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        caretPadding: 10,
+        },
+        legend: {
+        display: false
+        },
+        cutoutPercentage: 80,
+    },
+    });
+</script>
+<!-- bar chart js -->
+<script>
+    // Bar Chart Example
+    var ctx = document.getElementById("jenisPegawai");
+    var jenisPegawai = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Tendik", "Dosen Tetap", "Dosen Tidak Tetep", "pegawai tetap", "Kontrak"],
+        datasets: [{
+        label: "Jumlah Staf",
+        backgroundColor: "#4e73df",
+        hoverBackgroundColor: "#2e59d9",
+        borderColor: "#4e73df",
+        data: [<?= $total_pegawai_tendik;?>, <?= $total_pegawai_dosenTetap;?>, <?= $total_pegawai_dosenTidakTetap;?>, <?= $total_pegawai_tetap;?>, <?= $total_pegawai_kontrak;?>],
+        }],
+    },
+    options: {
+        maintainAspectRatio: false,
+        layout: {
+        padding: {
+            left: 10,
+            right: 25,
+            top: 25,
+            bottom: 0
+        }
+        },
+        scales: {
+        xAxes: [{
+            time: {
+            unit: 'Staf'
+            },
+            gridLines: {
+            display: false,
+            drawBorder: false
+            },
+            ticks: {
+            maxTicksLimit: 6
+            },
+            maxBarThickness: 25,
+        }],
+        yAxes: [{
+            ticks: {
+            min: 0,
+            max: 10,
+            maxTicksLimit: 5,
+            padding: 10,
+            // Include a dollar sign in the ticks
+            callback: function(value, index, values) {
+                return number_format(value);
+            }
+            },
+            gridLines: {
+            color: "rgb(234, 236, 244)",
+            zeroLineColor: "rgb(234, 236, 244)",
+            drawBorder: false,
+            borderDash: [2],
+            zeroLineBorderDash: [2]
+            }
+        }],
+        },
+        legend: {
+        display: false
+        },
+        tooltips: {
+        titleMarginBottom: 10,
+        titleFontColor: '#6e707e',
+        titleFontSize: 14,
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        caretPadding: 10,
+        callbacks: {
+            label: function(tooltipItem, chart) {
+            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel);
+            }
+        }
+        },
+    }
+    });
+</script>
+
+<!-- bar chart js -->
+<script>
+    // Bar Chart Example
+    var ctx = document.getElementById("myBarChart");
+    var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Islam", "Kristen", "Katolik", "Hindu", "Buddha", "Konghucu"],
+        datasets: [{
+        label: "Jumlah Staf",
+        backgroundColor: "#4e73df",
+        hoverBackgroundColor: "#2e59d9",
+        borderColor: "#4e73df",
+        data: [<?= $total_agama_islam;?>, <?= $total_agama_kristen;?>, <?= $total_agama_katolik;?>, <?= $total_agama_hindu;?>, <?= $total_agama_buddha;?>, <?= $total_agama_konghuchu;?>],
+        }],
+    },
+    options: {
+        maintainAspectRatio: false,
+        layout: {
+        padding: {
+            left: 10,
+            right: 25,
+            top: 25,
+            bottom: 0
+        }
+        },
+        scales: {
+        xAxes: [{
+            time: {
+            unit: 'Staf'
+            },
+            gridLines: {
+            display: false,
+            drawBorder: false
+            },
+            ticks: {
+            maxTicksLimit: 6
+            },
+            maxBarThickness: 25,
+        }],
+        yAxes: [{
+            ticks: {
+            min: 0,
+            max: 10,
+            maxTicksLimit: 5,
+            padding: 10,
+            // Include a dollar sign in the ticks
+            callback: function(value, index, values) {
+                return number_format(value);
+            }
+            },
+            gridLines: {
+            color: "rgb(234, 236, 244)",
+            zeroLineColor: "rgb(234, 236, 244)",
+            drawBorder: false,
+            borderDash: [2],
+            zeroLineBorderDash: [2]
+            }
+        }],
+        },
+        legend: {
+        display: false
+        },
+        tooltips: {
+        titleMarginBottom: 10,
+        titleFontColor: '#6e707e',
+        titleFontSize: 14,
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        caretPadding: 10,
+        callbacks: {
+            label: function(tooltipItem, chart) {
+            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+            return datasetLabel + ' : ' + number_format(tooltipItem.yLabel);
+            }
+        }
+        },
+    }
+    });
+</script>
+
 <!-- custom ajax checkbox role access-->
 <script>
     $('.custom-file-input').on('change', function() {
