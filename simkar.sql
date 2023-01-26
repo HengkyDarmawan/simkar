@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2023 at 02:53 AM
+-- Generation Time: Jan 26, 2023 at 03:34 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -128,7 +128,7 @@ INSERT INTO `master_hukuman` (`id`, `hukuman`) VALUES
 
 CREATE TABLE `master_jabatan` (
   `id_jabatan` int(11) NOT NULL,
-  `parent_jabatan_id` int(11) NOT NULL,
+  `parent_jabatan_id` varchar(128) NOT NULL,
   `paket_id` int(11) NOT NULL,
   `jabatan` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -138,14 +138,14 @@ CREATE TABLE `master_jabatan` (
 --
 
 INSERT INTO `master_jabatan` (`id_jabatan`, `parent_jabatan_id`, `paket_id`, `jabatan`) VALUES
-(1, 1, 2, 'WR 1'),
-(2, 1, 0, 'WR 2'),
-(3, 2, 0, 'SDM'),
-(4, 1, 0, 'WR3'),
-(5, 1, 0, 'WR4'),
-(8, 1, 0, 'Rektor'),
-(10, 6, 1, 'Manajer IT'),
-(11, 4, 0, 'Magang');
+(1, '1', 2, 'WR 1'),
+(2, '1', 0, 'WR 2'),
+(3, '1.2', 0, 'Manajer IT'),
+(4, '1', 0, 'WR3'),
+(5, '1', 0, 'WR4'),
+(10, '1.2.1', 1, 'Biro Infrastruktur'),
+(11, '1.2.1', 5, 'Magang'),
+(12, '0', 0, 'Dosen');
 
 -- --------------------------------------------------------
 
@@ -243,7 +243,8 @@ INSERT INTO `master_paket` (`id_paket`, `golongan_id`, `nama_paket`, `gaji_pokok
 --
 
 CREATE TABLE `master_parent_jabatan` (
-  `id_parent_jabatan` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_parent_jabatan` varchar(128) NOT NULL,
   `parent_jabatan` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -251,11 +252,18 @@ CREATE TABLE `master_parent_jabatan` (
 -- Dumping data for table `master_parent_jabatan`
 --
 
-INSERT INTO `master_parent_jabatan` (`id_parent_jabatan`, `parent_jabatan`) VALUES
-(1, 'Manager'),
-(2, 'Keuangan'),
-(4, 'Manajer IT'),
-(6, 'WR1');
+INSERT INTO `master_parent_jabatan` (`id`, `id_parent_jabatan`, `parent_jabatan`) VALUES
+(7, '1', 'Rektor'),
+(8, '1.1', 'WR1'),
+(9, '1.2', 'WR2'),
+(10, '1.3', 'WR3'),
+(11, '1.4', 'WR4'),
+(12, '1.2.1', 'Direktur IT'),
+(13, '1.2.1.1', 'Biro Infrastruktur'),
+(14, '1.2.1.2', 'Biro Sistem Informasi'),
+(15, '1.2.1.3', 'Biro Layanan IT'),
+(16, '1.2.1.1.1', 'Bagian Server'),
+(17, '1.2.1.1.2', 'Bagian layanan');
 
 -- --------------------------------------------------------
 
@@ -388,7 +396,7 @@ CREATE TABLE `user` (
   `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL,
   `tgl_bergabung` date NOT NULL,
-  `created_at` int(11) NOT NULL
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -396,10 +404,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`) VALUES
-(1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 3174092505520003, 1100000000011, 'BCA', 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 1234567, 123456789, 'tendik', 'default.png', '$2y$10$ojaaWuHiz1Lc.8.vAs5qZu7lPXwvCj5YsIqQ0StBObS9mHbMXh/UG', 1, 1, '2022-12-13', 20211102),
-(3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 1234, 1100000000013, 'Mandiri', 654654654, '12.345.678.9-101.013', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', 6546544, 747444121, 'dosen tetap', 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, '2019-12-13', 101022),
-(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Pria', 'Islam', 56464, 1100000000010, 'Mandiri', 65644452545, '12.345.678.9-101.014', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', 44443313, 8797741, 'dosen tidak tetap', 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', 1112),
-(5, 'tes', 2, 'Jakarta Selatan, Indonesia', 'Surabaya', '1995-11-02', 'Pria', 'Kristen', 123, 123, 'BRI', 123, '12.345.678.9-101.015', 'tes@gmail.com', 'hengkycross172@gmail.com', '089659172255', 1213, 1321, 'pegawai tetap', 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-10', 11111);
+(1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 3174092505520003, 1100000000011, 'BCA', 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 1234567, 123456789, 'tendik', 'default.png', '$2y$10$ojaaWuHiz1Lc.8.vAs5qZu7lPXwvCj5YsIqQ0StBObS9mHbMXh/UG', 1, 1, '2022-12-13', '2021-11-02'),
+(3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 1234, 1100000000013, 'Mandiri', 654654654, '12.345.678.9-101.013', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', 6546544, 747444121, 'dosen tetap', 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, '2019-12-13', '2010-10-22'),
+(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Pria', 'Islam', 56464, 1100000000010, 'Mandiri', 65644452545, '12.345.678.9-101.014', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', 44443313, 8797741, 'dosen tidak tetap', 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', '2000-11-12'),
+(5, 'eky', 10, 'Jakarta Barat, Indonesia', 'Singkawang', '1995-11-15', 'Pria', 'Katolik', 123555, 12345455, 'Mandiri', 12355, '12.345.678.9-101.017', 'eky@gmail.com', 'hengkycross52@gmail.com', '089659172256', 121377, 132177, 'pegawai tetap', 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-01', '2001-11-11');
 
 -- --------------------------------------------------------
 
@@ -437,6 +445,26 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (46, 3, 7),
 (47, 2, 7),
 (48, 1, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_jabatan`
+--
+
+CREATE TABLE `user_jabatan` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `jabatan_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_jabatan`
+--
+
+INSERT INTO `user_jabatan` (`id`, `user_id`, `jabatan_id`) VALUES
+(1, 1, 3),
+(2, 1, 12);
 
 -- --------------------------------------------------------
 
@@ -600,7 +628,7 @@ ALTER TABLE `master_paket`
 -- Indexes for table `master_parent_jabatan`
 --
 ALTER TABLE `master_parent_jabatan`
-  ADD PRIMARY KEY (`id_parent_jabatan`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `master_pendidikan`
@@ -636,6 +664,12 @@ ALTER TABLE `user`
 -- Indexes for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_jabatan`
+--
+ALTER TABLE `user_jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -694,7 +728,7 @@ ALTER TABLE `master_hukuman`
 -- AUTO_INCREMENT for table `master_jabatan`
 --
 ALTER TABLE `master_jabatan`
-  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `master_jurusan`
@@ -724,7 +758,7 @@ ALTER TABLE `master_paket`
 -- AUTO_INCREMENT for table `master_parent_jabatan`
 --
 ALTER TABLE `master_parent_jabatan`
-  MODIFY `id_parent_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `master_pendidikan`
@@ -754,13 +788,19 @@ ALTER TABLE `master_university`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT for table `user_jabatan`
+--
+ALTER TABLE `user_jabatan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_menu`

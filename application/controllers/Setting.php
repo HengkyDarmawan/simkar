@@ -11,8 +11,8 @@ class Setting extends CI_Controller
     public function index()
     {
         $data['title'] = "My Profile";
-        $data['user'] = $this->db->from('user u')->where('u.email_undira', $this->session->userdata('email_undira'))->join('user_role r', 'r.id = u.role_id')->get()->row_array();
-        // $data['user'] = $this->m_user->getUserByEmail();
+        $data['user'] = $this->m_user->getUserByEmail();
+        
 
         $this->load->view('template/header', $data);
         $this->load->view('setting/myprofile', $data);

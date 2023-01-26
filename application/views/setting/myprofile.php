@@ -23,7 +23,7 @@
                     </h5>
                     <div class="row pb-4">
                         <div class="col-md-4 mb-2">
-                            <i class="fas fa-fw fa-briefcase"></i><span class="badge badge-pill badge-primary ">Magang</span>
+                            <i class="fas fa-fw fa-briefcase"></i><span class="badge badge-pill badge-primary "><?= $user['jabatan']; ?></span>
                             <!-- <span class="badge badge-pill badge-info">Dosen</span> -->
                         </div>
                         <div class="col-md-4 mb-2">
@@ -33,7 +33,6 @@
                             <i class="fas fa-fw fa-envelope"></i> <?= $user['email']; ?>
                         </div>
                     </div>
-                    <p class="card-text"><small class="text-muted">Karyawan Sejak <?= date('d F Y', $user['created_at']); ?></small></p>
                 </div>
             </div>
         </div>
@@ -75,8 +74,7 @@
             <div class="row mb-3">
                 <div class="col-md-6 bold">Jabatan</div>
                 <div class="col-md-6">
-                    <span class="badge badge-pill badge-primary">Magang</span>
-                    <!-- <span class="badge badge-pill badge-info"><?= $user['jabatan_rangkap']; ?></span> -->
+                    <span class="badge badge-pill badge-primary"><?= $user['jabatan']; ?></span>
                 </div>
             </div>
             <hr>

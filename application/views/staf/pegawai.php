@@ -36,24 +36,6 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <tr>
-                            <td>1</td>
-                            <td>1234</td>
-                            <td>Athiyyah Nadiya</td>
-                            <td>SDM</td>
-                            <td>
-                                <a href="" class="btn btn-outline-info btn-sm">detail</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>1234</td>
-                            <td>Eky</td>
-                            <td>SDM</td>
-                            <td>
-                                <a href="" class="btn btn-outline-info btn-sm">detail</a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
