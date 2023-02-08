@@ -166,7 +166,7 @@
                                 <td><?= $i++; ?></td>
                                 <td><?= $kel['nama_keluarga']; ?></td>
                                 <td><?= $kel['hubungan']; ?></td>
-                                <td><?= $kel['telp']; ?></td>
+                                <td><?= $kel['telp_keluarga']; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
