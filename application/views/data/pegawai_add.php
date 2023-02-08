@@ -86,14 +86,33 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
-                            <label>Alamat</label>
-                            <input type="text" name="address" class="form-control">
-                            <?= form_error('address', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <label>Status</label>
+                            <input type="text" name="status_pernikahan" class="form-control">
+                            <?= form_error('status_pernikahan', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="col">
                             <label>Nomor Telpon (WA)</label>
                             <input type="text" name="telp" class="form-control">
                             <?= form_error('telp', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Alamat</label>
+                    <textarea class="form-control" name="address"></textarea>
+                    <?= form_error('address', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label>Nama Kontak Darurat</label>
+                            <input type="text" name="nama_darurat" class="form-control">
+                            <?= form_error('nama_darurat', '<small class="text-danger pl-3">', '</small>'); ?>
+                        </div>
+                        <div class="col">
+                            <label>Telpon Kontak Darurat</label>
+                            <input type="text" name="telp_darurat" class="form-control">
+                            <?= form_error('telp_darurat', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                     </div>
                 </div>

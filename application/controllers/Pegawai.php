@@ -33,6 +33,7 @@ class Pegawai extends CI_Controller
         $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('status_pernikahan', 'Status', 'required');
         $this->form_validation->set_rules('nik_ktp', 'NIK KTP', 'required|numeric');
         $this->form_validation->set_rules('nik_karyawan', 'NIK Pegawai', 'required');
         $this->form_validation->set_rules('nama_bank', 'Bank', 'required');
@@ -41,6 +42,8 @@ class Pegawai extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('email_undira', 'Email Undira', 'required');
         $this->form_validation->set_rules('telp', 'No.Hp', 'required|numeric');
+        $this->form_validation->set_rules('nama_darurat', 'Nama Kontak Darurat', 'required');
+        $this->form_validation->set_rules('telp_darurat', 'Telpon Kontak Darurat', 'required|numeric');
         $this->form_validation->set_rules('no_bpjs_kesehatan', 'No BPJS Kesehatan', 'required|numeric');
         $this->form_validation->set_rules('no_bpjs_ketenagakerjaan', 'No BPJS Ketenagakerjaan', 'required|numeric');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -73,11 +76,12 @@ class Pegawai extends CI_Controller
         $data['title'] = 'Detail Pegawai';
         $data['user'] = $this->m_auth->getUserLogin();
         $data['pegawai'] = $this->m_user->getPegawaiByID($id);
+        $data['keluarga'] = $this->m_user->getKeluargaById($id);
         $data['pengalaman'] = $this->m_user->getPengalamanById($id);
         $data['pendidikan'] = $this->m_user->getPendidikanById($id);
         $data['pelatihan'] = $this->m_user->getPelatihanById($id);
         $data['seminar'] = $this->m_user->getSeminarById($id);
-        // var_dump($data['pendidikan']);
+        // var_dump($data['keluarga']);
 
         $this->load->view('template/header', $data);
         $this->load->view('data/pegawai_detail', $data);
@@ -98,6 +102,7 @@ class Pegawai extends CI_Controller
         $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('status_pernikahan', 'Status', 'required');
         $this->form_validation->set_rules('nik_ktp', 'NIK KTP', 'required|numeric');
         $this->form_validation->set_rules('nik_karyawan', 'NIK Pegawai', 'required');
         $this->form_validation->set_rules('nama_bank', 'Bank', 'required');
@@ -106,6 +111,8 @@ class Pegawai extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('email_undira', 'Email Undira', 'required');
         $this->form_validation->set_rules('telp', 'No.Hp', 'required|numeric');
+        $this->form_validation->set_rules('nama_darurat', 'Nama Kontak Darurat', 'required');
+        $this->form_validation->set_rules('telp_darurat', 'Telpon Kontak Darurat', 'required|numeric');
         $this->form_validation->set_rules('no_bpjs_kesehatan', 'No BPJS Kesehatan', 'required|numeric');
         $this->form_validation->set_rules('no_bpjs_ketenagakerjaan', 'No BPJS Ketenagakerjaan', 'required|numeric');
         $this->form_validation->set_rules('role_id', 'Role', 'required');

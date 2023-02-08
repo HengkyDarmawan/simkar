@@ -42,6 +42,7 @@ class M_user extends CI_Model
             "tgl_lahir" => $this->input->post('tgl_lahir', true),
             "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
             "agama" => $this->input->post('agama', true),
+            "status_pernikahan" => $this->input->post('status_pernikahan', true),
             "nik_ktp" => $this->input->post('nik_ktp', true),
             "nik_karyawan" => $this->input->post('nik_karyawan', true),
             "nama_bank" => $this->input->post('nama_bank', true),
@@ -50,6 +51,8 @@ class M_user extends CI_Model
             "email" => $this->input->post('email', true),
             "email_undira" => $this->input->post('email_undira', true),
             "telp" => $this->input->post('telp', true),
+            "nama_darurat" => $this->input->post('nama_darurat', true),
+            "telp_darurat" => $this->input->post('telp_darurat', true),
             "no_bpjs_kesehatan" => $this->input->post('no_bpjs_kesehatan', true),
             "no_bpjs_ketenagakerjaan" => $this->input->post('no_bpjs_ketenagakerjaan', true),
             "image" => "default.png",
@@ -74,6 +77,7 @@ class M_user extends CI_Model
             "tgl_lahir" => $this->input->post('tgl_lahir', true),
             "jenis_kelamin" => $this->input->post('jenis_kelamin', true),
             "agama" => $this->input->post('agama', true),
+            "status_pernikahan" => $this->input->post('status_pernikahan', true),
             "nik_ktp" => $this->input->post('nik_ktp', true),
             "nik_karyawan" => $this->input->post('nik_karyawan', true),
             "nama_bank" => $this->input->post('nama_bank', true),
@@ -82,6 +86,8 @@ class M_user extends CI_Model
             "email" => $this->input->post('email', true),
             "email_undira" => $this->input->post('email_undira', true),
             "telp" => $this->input->post('telp', true),
+            "nama_darurat" => $this->input->post('nama_darurat', true),
+            "telp_darurat" => $this->input->post('telp_darurat', true),
             "no_bpjs_kesehatan" => $this->input->post('no_bpjs_kesehatan', true),
             "no_bpjs_ketenagakerjaan" => $this->input->post('no_bpjs_ketenagakerjaan', true),
             "role_id" => $this->input->post('role_id', true),
@@ -90,6 +96,15 @@ class M_user extends CI_Model
         ];
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('user', $data);
+    }
+
+    public function getKeluargaById($id)
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->join('data_keluarga', 'data_keluarga.user_id = user.id', 'left');
+        $this->db->where('user.id', $id);
+        return $this->db->get()->result_array();
     }
 
     public function getPengalamanById($id)

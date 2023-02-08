@@ -10,7 +10,7 @@ class Jabatan extends CI_Controller
     // }
     public function index()
     {
-        $data['title'] = "Data Jabatan";
+        $data['title'] = "Data Posisi Jabatan";
         $data['user'] = $this->m_auth->getUserLogin();
         $data['jabatan'] = $this->m_jabatan->getAllJabatan();
         $this->load->view('template/header', $data);

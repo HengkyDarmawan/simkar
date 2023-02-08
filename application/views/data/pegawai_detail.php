@@ -63,6 +63,16 @@
             </div>
             <hr>
             <div class="row mb-3">
+                <div class="col-md-6 bold">Status Pernikahan</div>
+                <div class="col-md-6"><?= $pegawai['status_pernikahan']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Kontak Darurat</div>
+                <div class="col-md-6"><strong><?= $pegawai['nama_darurat']; ?><hr><?= $pegawai['telp_darurat']; ?></strong></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
                 <div class="col-md-6 bold">Jenis Kelamin</div>
                 <div class="col-md-6"><?= $pegawai['jenis_kelamin']; ?></div>
             </div>
@@ -116,6 +126,57 @@
     </div>
 </div>
 
+<!-- Begin Page Content Keluarga -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+    <?= $this->session->flashdata('message'); ?>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-flex">
+                <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Keluarga</h6>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead class="text-center">
+                        <tr>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Hubungan</th>
+                            <th>Telpon</th>
+                        </tr>
+                    </thead>
+                    <tfoot class="text-center">
+                        <tr>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Hubungan</th>
+                            <th>Telpon</th>
+                        </tr>
+                    </tfoot>
+                    <tbody class="text-center">
+                        <?php $i = 1; ?>
+                        <?php foreach ($keluarga as $kel) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <td><?= $kel['nama_keluarga']; ?></td>
+                                <td><?= $kel['hubungan']; ?></td>
+                                <td><?= $kel['telp']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+
 <!-- Begin Page Content Pendidikan -->
 <div class="container-fluid">
 
@@ -132,7 +193,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
@@ -189,7 +250,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
@@ -247,7 +308,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
@@ -315,7 +376,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>

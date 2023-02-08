@@ -22,6 +22,68 @@ function is_logged_in()
     }
 }
 
+
+
+// test with submenu
+// function is_logged_in()
+// {
+//     $ci = get_instance();
+//     if (!$ci->session->userdata('email_undira')) {
+//         redirect('auth');
+//     } else {
+//         $role_id = $ci->session->userdata('role_id');
+//         $menu = $ci->uri->segment(1);
+//         $sub_menu = $ci->uri->segment(2);
+
+//         $query_menu = $ci->db->get_where('user_menu', ['menu' => $menu])->row_array();
+//         $menu_id = $query_menu['id'];
+
+//         $query_sub_menu = $ci->db->get_where('user_sub_menu', [
+//             'menu_id' => $menu_id,
+//             'url' => $sub_menu
+//         ])->row_array();
+//         $sub_menu_id = $query_sub_menu['id'];
+
+//         $user_access = $ci->db->get_where('user_access_menu', [
+//             'role_id' => $role_id,
+//             'menu_id' => $menu_id,
+//             'sub_menu_id' => $sub_menu_id
+//         ]);
+
+//         if ($user_access->num_rows() < 1) {
+//             redirect('auth/blocked');
+//         }
+//     }
+// }
+
+
+
+//gagal
+// function is_logged_in()
+// {
+//     $ci = get_instance();
+//     if (!$ci->session->userdata('email_undira')) {
+//         redirect('auth');
+//     } else {
+//         $role_id = $ci->session->userdata('role_id');
+//         $menu = $ci->uri->segment(1);
+
+//         $query_menu = $ci->db->get_where('user_menu', ['menu' => $menu])->row_array();
+//         if (empty($query_menu)) {
+//             return true;
+//         }
+//         $menu_id = $query_menu['id'];
+
+//         $user_access = $ci->db->get_where('user_access_menu', [
+//             'role_id' => $role_id,
+//             'menu_id' => $menu_id
+//         ]);
+//         if ($user_access->num_rows() < 1) {
+//             redirect('auth/blocked');
+//         }
+//     }
+// }
+
 function check_access($role_id, $menu_id)
 {
     $ci = get_instance();
