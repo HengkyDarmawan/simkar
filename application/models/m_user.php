@@ -6,6 +6,22 @@ class M_user extends CI_Model
     {
         return $this->db->get('user')->result_array();
     }
+    public function getAllUserPending()
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('approval', 'review');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    public function getAllUseraApproved()
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('approval', 'approved');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
     public function getUserByEmail(){
         $this->db->from('user u');
         $this->db->where('u.email_undira', $this->session->userdata('email_undira'));
@@ -13,16 +29,6 @@ class M_user extends CI_Model
         $this->db->join('master_jabatan mj', 'mj.id_jabatan = u.jabatan_id');
         return $this->db->get()->row_array();
     }
-    //tes
-    // public function get_user_data() {
-    //     $this->db->from('user u');
-    //     $this->db->where('u.email_undira', $this->session->userdata('email_undira'));
-    //     $this->db->join('user_role r', 'r.id = u.role_id');
-    //     $this->db->join('user_jabatan uj', 'uj.user_id = u.id');
-    //     $this->db->join('master_jabatan mj', 'mj.id_jabatan = uj.jabatan_id');
-    //     return $this->db->get()->result_array();
-    // }
-    //end tes
     public function getPegawaiByID($id)
     {
         $this->db->select('user.*, master_jabatan.jabatan');

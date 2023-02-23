@@ -18,6 +18,16 @@ class Pegawai extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function approvedPegawai()
+    {
+        $data['title'] = "Approved user";
+        $data['user'] = $this->m_auth->getUserLogin();
+        $data['Approvedusers'] = $this->m_user->getAllUseraApproved();
+        $this->load->view('template/header', $data);
+        $this->load->view('data/approved', $data);
+        $this->load->view('template/footer');
+    }
+
     public function addPegawai()
     {
         $data['title'] = "Add Data Pegawai";
