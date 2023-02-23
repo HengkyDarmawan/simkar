@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2023 at 10:32 PM
+-- Generation Time: Feb 23, 2023 at 03:17 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -422,18 +422,19 @@ CREATE TABLE `user` (
   `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL,
   `tgl_bergabung` date NOT NULL,
-  `created_at` date NOT NULL DEFAULT current_timestamp()
+  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `approval` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `status_pernikahan`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `nama_darurat`, `telp_darurat`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`) VALUES
-(1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', 3174092505520003, 1100000000011, 'BCA', 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', 1234567, 123456789, 'tendik', 'default.png', '$2y$10$ojaaWuHiz1Lc.8.vAs5qZu7lPXwvCj5YsIqQ0StBObS9mHbMXh/UG', 1, 1, '2022-12-13', '2021-11-02'),
-(3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 'single', 1234, 1100000000013, 'Mandiri', 654654654, '12.345.678.9-101.013', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', '', '0', 6546544, 747444121, 'dosen tetap', 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, '2019-12-13', '2010-10-22'),
-(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Pria', 'Islam', 'menikah', 56464, 1100000000010, 'Mandiri', 65644452545, '12.345.678.9-101.014', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', '', '0', 44443313, 8797741, 'dosen tidak tetap', 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', '2000-11-12'),
-(5, 'eky', 10, 'Jakarta Barat, Indonesia', 'Singkawang', '1995-11-15', 'Pria', 'Katolik', 'menikah', 123555, 12345455, 'Mandiri', 12355, '12.345.678.9-101.017', 'eky@gmail.com', 'hengkycross52@gmail.com', '089659172256', '', '0', 121377, 132177, 'pegawai tetap', 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-01', '2001-11-11');
+INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `status_pernikahan`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `nama_darurat`, `telp_darurat`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`, `approval`) VALUES
+(1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', 3174092505520003, 1100000000011, 'BCA', 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', 1234567, 123456789, 'tendik', 'default.png', '$2y$10$ojaaWuHiz1Lc.8.vAs5qZu7lPXwvCj5YsIqQ0StBObS9mHbMXh/UG', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
+(3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 'single', 1234, 1100000000013, 'Mandiri', 654654654, '12.345.678.9-101.013', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', 'Yudi', '082196629982', 6546544, 747444121, 'dosen tetap', 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, '2019-12-13', '2010-10-22', 'approved'),
+(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Pria', 'Islam', 'menikah', 56464, 1100000000010, 'Mandiri', 65644452545, '12.345.678.9-101.014', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', 'Sinta', '082196629722', 44443313, 8797741, 'dosen tidak tetap', 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', '2000-11-12', 'review'),
+(5, 'eky', 10, 'Jakarta Barat, Indonesia', 'Singkawang', '1995-11-15', 'Pria', 'Katolik', 'menikah', 123555, 12345455, 'Mandiri', 12355, '12.345.678.9-101.017', 'eky@gmail.com', 'hengkycross52@gmail.com', '089659172256', 'Eko', '082196628852', 121377, 132177, 'pegawai tetap', 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-01', '2001-11-11', 'review');
 
 -- --------------------------------------------------------
 
@@ -471,7 +472,8 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`) VALUE
 (46, 3, 7, 1),
 (47, 2, 7, 1),
 (48, 1, 6, 1),
-(49, 1, 12, 1);
+(49, 1, 12, 1),
+(50, 1, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -565,7 +567,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (3, 3, 'Dashboard', 'user', 'fas fa-fw fa-tachometer-alt', 1),
 (5, 4, 'Menu Management', 'menu', 'far fa-fw fa-folder', 1),
 (6, 4, 'Sub Menu Management', 'menu/submenu', 'far fa-fw fa-folder-open', 1),
-(13, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-check', 1),
+(13, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-lock', 1),
 (15, 18, 'My Profile', 'setting', 'fas fa-fw fa-users-cog', 1),
 (17, 12, 'Data Pegawai', 'pegawai', 'fas fa-fw fa-user-tie', 1),
 (18, 18, 'Edit Profile', 'setting/edit', 'fas fa-fw fa-user-edit', 1),
@@ -579,7 +581,9 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (32, 7, 'Slip Gaji', 'gaji/slip', 'fas fa-fw fa-wallet', 1),
 (33, 12, 'Data Libur', 'libur', 'fas fa-fw fa-calendar-week', 1),
 (34, 6, 'Rekap Absen', 'absensi', 'fas fa-fw fa-user-check', 1),
-(35, 12, 'Data Staf', 'staf/pegawai', 'fas fa-fw fa-users', 0);
+(35, 12, 'Data Staf', 'staf/pegawai', 'fas fa-fw fa-users', 0),
+(38, 1, 'Approval User', 'approval', 'fas fa-fw fa-user-check', 1),
+(39, 1, 'Approved User', 'pegawai/approvedPegawai', 'fas fa-fw fa-user-friends', 1);
 
 -- --------------------------------------------------------
 
@@ -834,7 +838,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `user_jabatan`
@@ -858,7 +862,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user_token`
