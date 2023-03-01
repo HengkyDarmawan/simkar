@@ -182,7 +182,25 @@
                         </label>
                     </div>
                 </div>
-                
+                <div class="form-group">
+                    <label>Approval</label>
+                    <select name="approval" class="form-control">
+                        <?php
+                        if ($pegawai['approval'] == "review") { ?>
+                            <option value="review" selected>Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else if ($pegawai['approval'] == "approved") { ?>
+                            <option value="review">Review</option>
+                            <option value="approved" selected>Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else { ?>
+                            <option value="review">Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected" selected>Rejected</option>
+                        <?php } ?>
+                    </select>
+                </div>
                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                 <a href="<?= base_url('pegawai'); ?>" class="btn btn-danger">Cancel</a>
             </form>

@@ -12,7 +12,11 @@ class Setting extends CI_Controller
     {
         $data['title'] = "My Profile";
         $data['user'] = $this->m_user->getUserByEmail();
-        
+        $data['data_keluarga'] = $this->m_auth->getDataKeluarga($data['user']['id']);
+        $data['data_pendidikan'] = $this->m_auth->getDataPendidikan($data['user']['id']);
+        $data['data_pengalaman'] = $this->m_auth->getDataPengalaman($data['user']['id']);
+        $data['data_pelatihan'] = $this->m_auth->getDataPelatihan($data['user']['id']);
+        $data['data_seminar'] = $this->m_auth->getDataSeminar($data['user']['id']);
 
         $this->load->view('template/header', $data);
         $this->load->view('setting/myprofile', $data);
@@ -72,6 +76,7 @@ class Setting extends CI_Controller
             $this->db->set('tmpt_lahir', $tmpt_lahir);
             $this->db->set('address', $address);
             $this->db->set('tgl_lahir', $tgl_lahir);
+            $this->db->set('approval', "review");
             $this->db->where('email_undira', $emailUndira);
             $this->db->update('user');
 

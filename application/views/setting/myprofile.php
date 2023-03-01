@@ -16,11 +16,29 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title font-weight-bold text-primary pb-2"><?= $user['name']; ?>
-                        <small>
-                            <span class="badge badge-pill badge-success"><?= $user['role']; ?></span>
-                        </small>
-                    </h5>
+                    <div class="row">
+                        <div class="col-md text-left">
+                            <h5 class="card-title font-weight-bold text-primary "><?= $user['name']; ?>
+                                <small>
+                                    <span class="badge badge-pill badge-success"><?= $user['role']; ?></span>
+                                </small>
+                            </h5>
+                            <h5 class="pb-2">
+                                <small>
+                                    <?php
+                                    if ($user['approval'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $user['approval']; ?></span>
+                                    <?php } else if ($user['approval'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $user['approval']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $user['approval']; ?></span>
+                                    <?php } ?>
+                                </small>
+                            </h5>
+                        </div>
+                        
+                    </div>
+                    
                     <div class="row pb-4">
                         <div class="col-md-4 mb-2">
                             <i class="fas fa-fw fa-briefcase"></i><span class="badge badge-pill badge-primary "><?= $user['jabatan']; ?></span>
@@ -101,6 +119,56 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+<!-- Begin Page Content Keluarga -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+    <?= $this->session->flashdata('message'); ?>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-flex">
+                <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Keluarga</h6>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead class="text-center">
+                        <tr>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Hubungan</th>
+                            <th>Telpon</th>
+                        </tr>
+                    </thead>
+                    <tfoot class="text-center">
+                        <tr>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Hubungan</th>
+                            <th>Telpon</th>
+                        </tr>
+                    </tfoot>
+                    <tbody class="text-center">
+                        <?php $i = 1; ?>
+                        <?php foreach ($data_keluarga as $kel) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <td><?= $kel['nama_keluarga']; ?></td>
+                                <td><?= $kel['hubungan']; ?></td>
+                                <td><?= $kel['telp_keluarga']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
 <!-- Begin Page Content Pendidikan -->
 <div class="container-fluid">
 
@@ -117,7 +185,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
@@ -137,8 +205,8 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <!-- <?php $i = 1; ?>
-                        <?php foreach ($pendidikan as $pen) : ?>
+                        <?php $i = 1; ?>
+                        <?php foreach ($data_pendidikan as $pen) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $pen['tingkat_pendidikan']; ?></td>
@@ -149,7 +217,7 @@
 
                                 <td><?= mediumdate_indo($pen['tgl_lulus']); ?></td>
                             </tr>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -157,7 +225,6 @@
     </div>
 </div>
 <!-- /.container-fluid -->
-
 <!-- Begin Page Content Pengalaman -->
 <div class="container-fluid">
 
@@ -174,7 +241,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
@@ -196,8 +263,8 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <!-- <?php $i = 1; ?>
-                        <?php foreach ($pengalaman as $penga) : ?>
+                        <?php $i = 1; ?>
+                        <?php foreach ($data_pengalaman as $penga) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $penga['nama_perusahaan']; ?></td>
@@ -206,7 +273,7 @@
                                 <td><?= mediumdate_indo($penga['tgl_berakhir']); ?></td>
                                 <td><?= $penga['alasan_berhenti']; ?></td>
                             </tr>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -232,7 +299,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
@@ -258,8 +325,8 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <!-- <?php $i = 1; ?>
-                        <?php foreach ($pelatihan as $pel) : ?>
+                        <?php $i = 1; ?>
+                        <?php foreach ($data_pelatihan as $pel) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $pel['nama_pelatihan']; ?>
@@ -274,7 +341,7 @@
                                     <a href="<?= $pel['url']; ?>" class="btn btn-outline-primary">Link</a>
                                 </td>
                             </tr>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -300,7 +367,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" width="100%" cellspacing="0">
+                <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead class="text-center">
                         <tr>
                             <th>#</th>
@@ -322,8 +389,8 @@
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
-                        <!-- <?php $i = 1; ?>
-                        <?php foreach ($seminar as $seminar) : ?>
+                        <?php $i = 1; ?>
+                        <?php foreach ($data_seminar as $seminar) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $seminar['nama_seminar']; ?>
@@ -336,7 +403,7 @@
                                     <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary">Link</a>
                                 </td>
                             </tr>
-                        <?php endforeach; ?> -->
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

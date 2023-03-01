@@ -46,6 +46,7 @@
                             <th>NIK Pegawai</th>
                             <th>Nama</th>
                             <th>Email</th>
+                            <th>Approval</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -55,6 +56,7 @@
                             <th>NIK Pegawai</th>
                             <th>Nama</th>
                             <th>Email</th>
+                            <th>Approval</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -66,6 +68,16 @@
                                 <td><?= $pegawai['nik_karyawan']; ?></td>
                                 <td><?= $pegawai['name']; ?></td>
                                 <td><?= $pegawai['email_undira']; ?></td>
+                                <td>
+                                    <?php
+                                    if ($pegawai['approval'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $pegawai['approval']; ?></span>
+                                    <?php } else if ($pegawai['approval'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $pegawai['approval']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $pegawai['approval']; ?></span>
+                                    <?php } ?>
+                                </td>
                                 <td>
                                     <a href="<?= base_url(); ?>pegawai/detailpegawai/<?= $pegawai['id']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>
                                     <a href="<?= base_url(); ?>pegawai/hapuspegawai/<?= $pegawai['id']; ?>" class="btn btn-outline-danger btn-sm my-2" onclick="return confirm('yakin?');">Delete</a>

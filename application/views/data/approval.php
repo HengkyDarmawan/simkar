@@ -11,7 +11,6 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
-                <a href="<?= base_url('pegawai/addpegawai'); ?>" class="btn btn-outline-primary btn-md">Add New Pegawai</a>
             </div>
 
         </div>

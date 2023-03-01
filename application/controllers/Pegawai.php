@@ -18,16 +18,6 @@ class Pegawai extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function approvedPegawai()
-    {
-        $data['title'] = "Approved user";
-        $data['user'] = $this->m_auth->getUserLogin();
-        $data['Approvedusers'] = $this->m_user->getAllUseraApproved();
-        $this->load->view('template/header', $data);
-        $this->load->view('data/approved', $data);
-        $this->load->view('template/footer');
-    }
-
     public function addPegawai()
     {
         $data['title'] = "Add Data Pegawai";
@@ -60,13 +50,27 @@ class Pegawai extends CI_Controller
         $this->form_validation->set_rules('role_id', 'Role', 'required');
         $this->form_validation->set_rules('is_active', 'Active', 'required');
         $this->form_validation->set_rules('tgl_bergabung', 'Tanggal Bergabung', 'required');
+        //keluarga
+        $this->form_validation->set_rules('nama_keluarga', 'Nama Keluarga', 'required');
+        $this->form_validation->set_rules('hubungan', 'Hubungan', 'required');
+        $this->form_validation->set_rules('telp_keluarga', 'Telpon', 'required|numeric');
+        //pendidikan
+        $this->form_validation->set_rules('tingkat_pendidikan', 'Tingkat Pendidikan', 'required');
+        $this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
+        $this->form_validation->set_rules('universitas', 'Universitas', 'required');
+        $this->form_validation->set_rules('alamat_univ', 'Alamat Universitas', 'required');
+        $this->form_validation->set_rules('judul_skripsi', 'Judul Skripsi', 'required');
+        $this->form_validation->set_rules('nama_dospem', 'Nama Dosen Pembimbing', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tgl_lulus', 'Tanggal Selesai', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
             $this->load->view('data/pegawai_add', $data);
             $this->load->view('template/footer');
         } else {
-            $this->m_user->addPegawai();
+            $this->m_user->addAllPegawai();
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">pegawai Di Tambahkan !!!</div>');
             redirect('pegawai');
         }

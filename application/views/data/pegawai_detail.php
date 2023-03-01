@@ -18,7 +18,19 @@
         </div>
         <div class="card-body">
             <div class="row mb-3">
-                <img src="<?= base_url('assets/img/profile/') . $pegawai['image']; ?>" alt="..." class="img-fluid" style="height: 100%;">
+                <div class="col-md">
+                    <img src="<?= base_url('assets/img/profile/') . $pegawai['image']; ?>" alt="..." class="img-fluid" style="height: 100%;">
+                </div>
+                <div class="col-md text-right">
+                    <?php
+                    if ($pegawai['approval'] == "review") { ?>
+                        <span class="badge badge-pill badge-warning "><?= $pegawai['approval']; ?></span>
+                    <?php } else if ($pegawai['approval'] == "approved") { ?>
+                        <span class="badge badge-pill badge-success "><?= $pegawai['approval']; ?></span>
+                    <?php } else { ?>
+                        <span class="badge badge-pill badge-danger "><?= $pegawai['approval']; ?></span>
+                    <?php } ?>
+                </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-6 bold">Nomor Pegawai</div>
