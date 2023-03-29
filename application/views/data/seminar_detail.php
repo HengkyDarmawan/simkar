@@ -5,7 +5,7 @@
         <div class="card-header">
             <div class="d-flex col-sm">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
-                <a href="<?= base_url(); ?>seminar/editseminar/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-success">Edit seminar</a>
+                <a href="<?= base_url(); ?>seminar/editseminar/<?= $seminar['id_seminar']; ?>" class="btn btn-outline-primary">Edit seminar</a>
             </div>
         </div>
         <div class="card-body">

@@ -12,12 +12,12 @@ class Setting extends CI_Controller
     {
         $data['title'] = "My Profile";
         $data['user'] = $this->m_user->getUserByEmail();
+        
         $data['data_keluarga'] = $this->m_auth->getDataKeluarga($data['user']['id']);
         $data['data_pendidikan'] = $this->m_auth->getDataPendidikan($data['user']['id']);
         $data['data_pengalaman'] = $this->m_auth->getDataPengalaman($data['user']['id']);
         $data['data_pelatihan'] = $this->m_auth->getDataPelatihan($data['user']['id']);
         $data['data_seminar'] = $this->m_auth->getDataSeminar($data['user']['id']);
-
         $this->load->view('template/header', $data);
         $this->load->view('setting/myprofile', $data);
         $this->load->view('template/footer');
@@ -117,6 +117,117 @@ class Setting extends CI_Controller
                     redirect('setting/changepassword');
                 }
             }
+        }
+    }
+    public function addKeluarga()
+    {
+        $data['title'] = "Add Data Keluarga";
+        $data['user'] = $this->m_auth->getUserLogin();
+
+        $this->form_validation->set_rules('nama_keluarga', 'Nama Keluarga', 'required');
+        $this->form_validation->set_rules('hubungan', 'Hubungan', 'required');
+        $this->form_validation->set_rules('telp_keluarga', 'Telpon', 'required|numeric');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('setting/keluarga_add', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->m_auth->addKeluarga();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Keluarga Di Tambahkan !!!</div>');
+            redirect('setting');
+        }
+    }
+    public function addPendidikan()
+    {
+        $data['title'] = "Add Data Pendidikan";
+        $data['user'] = $this->m_auth->getUserLogin();
+        // $data['users'] = $this->m_user->getAllUser();
+
+        $this->form_validation->set_rules('tingkat_pendidikan', 'Tingkat Pendidikan', 'required');
+        $this->form_validation->set_rules('jurusan', 'Jurusan', 'required');
+        $this->form_validation->set_rules('universitas', 'Universitas', 'required');
+        $this->form_validation->set_rules('alamat_univ', 'Alamat Universitas', 'required');
+        $this->form_validation->set_rules('judul_skripsi', 'Judul Skripsi', 'required');
+        $this->form_validation->set_rules('nama_dospem', 'Nama Dosen Pembimbing', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tgl_lulus', 'Tanggal Selesai', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('setting/pendidikan_add', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->m_auth->addPendidikan();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pendidikan Di Tambahkan !!!</div>');
+            redirect('setting');
+        }
+    }
+    public function addPengalaman()
+    {
+        $data['title'] = "Add Data Pengalaman";
+        $data['user'] = $this->m_auth->getUserLogin();
+
+        $this->form_validation->set_rules('nama_perusahaan', 'Nama Perusahaan', 'required');
+        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
+        $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tgl_berakhir', 'Tanggal Berakhir', 'required');
+        $this->form_validation->set_rules('alasan_berhenti', 'Alasan Berhenti', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('setting/Pengalaman_add', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->m_auth->addPengalaman();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">pengalaman Di Tambahkan !!!</div>');
+            redirect('setting');
+        }
+    }
+    public function addPelatihan()
+    {
+        $data['title'] = "Add Data Pelatihan";
+        $data['user'] = $this->m_auth->getUserLogin();
+
+        $this->form_validation->set_rules('nama_pelatihan', 'Nama Pelatihan', 'required');
+        $this->form_validation->set_rules('organisasi_penerbit', 'Organisasi Penerbit', 'required');
+        $this->form_validation->set_rules('lokasi_pelatihan', 'Lokasi Pelatihan', 'required');
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi Pelatihan', 'required');
+        $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
+        $this->form_validation->set_rules('tgl_selesai', 'Tanggal Selesai', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('data/pelatihan_add', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->m_auth->addPelatihan();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Pelatihan Di Tambahkan !!!</div>');
+            redirect('setting');
+        }
+    }
+    public function addSeminar(){
+        $data['title'] = "Add Data Seminar";
+        $data['user'] = $this->m_auth->getUserLogin();
+
+        $this->form_validation->set_rules('nama_seminar', 'Nama seminar', 'required');
+        $this->form_validation->set_rules('deskripsi_seminar', 'Deskripsi Seminar', 'required');
+        $this->form_validation->set_rules('organisasi_pelaksana', 'Organisasi pelaksana', 'required');
+        $this->form_validation->set_rules('lokasi_seminar', 'Lokasi Seminar', 'required');
+        $this->form_validation->set_rules('tgl_seminar', 'Tanggal seminar', 'required');
+        $this->form_validation->set_rules('url', 'URL', 'required');
+    
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/header', $data);
+            $this->load->view('setting/seminar_add', $data);
+            $this->load->view('template/footer');
+        } else {
+            $this->m_auth->addSeminar();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Seminar Di Tambahkan !!!</div>');
+            redirect('setting');
         }
     }
 }

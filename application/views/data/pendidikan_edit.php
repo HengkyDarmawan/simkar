@@ -123,6 +123,25 @@
                     <input type="date" name="tgl_lulus" class="form-control" value="<?= $pendidikan['tgl_lulus']; ?>">
                     <?= form_error('tgl_lulus', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" class="form-control">
+                        <?php
+                        if ($pendidikan['status'] == "review") { ?>
+                            <option value="review" selected>Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else if ($pendidikan['status'] == "approved") { ?>
+                            <option value="review">Review</option>
+                            <option value="approved" selected>Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else { ?>
+                            <option value="review">Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected" selected>Rejected</option>
+                        <?php } ?>
+                    </select>
+                </div>
                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                 <a href="<?= base_url('pendidikan'); ?>" class="btn btn-danger">Cancel</a>
             </form>

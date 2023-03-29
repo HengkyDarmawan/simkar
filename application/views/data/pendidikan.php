@@ -25,6 +25,7 @@
                             <th>Tingkat Pendidikan</th>
                             <th>Jurusan & Universitas</th>
                             <th>Tanggal Masuk s/d Lulus</th>
+                            <th>Status</th>
                             <th>Link</th>
                             <th>Action</th>
                         </tr>
@@ -36,6 +37,7 @@
                             <th>Tingkat Pendidikan</th>
                             <th>Jurusan & Universitas</th>
                             <th>Tanggal Mulai s/d Lulus</th>
+                            <th>Status</th>
                             <th>Link</th>
                             <th>Action</th>
                         </tr>
@@ -51,6 +53,16 @@
                                     <br><strong>(<?= $pendidik['universitas']; ?>)</strong>
                                 </td>
                                 <td><?= mediumdate_indo($pendidik['tgl_mulai']); ?> s/d <?= mediumdate_indo($pendidik['tgl_lulus']); ?></td>
+                                <td>
+                                    <?php
+                                    if ($pendidik['status'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $pendidik['status']; ?></span>
+                                    <?php } else if ($pendidik['status'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $pendidik['status']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $pendidik['status']; ?></span>
+                                    <?php } ?>
+                                </td>
                                 <td>
                                     <a href="<?= $pendidik['url']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Link</a>
                                 </td>

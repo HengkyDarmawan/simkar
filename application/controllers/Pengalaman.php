@@ -30,6 +30,7 @@ class Pengalaman extends CI_Controller
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_berakhir', 'Tanggal Berakhir', 'required');
         $this->form_validation->set_rules('alasan_berhenti', 'Alasan Berhenti', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -62,6 +63,7 @@ class Pengalaman extends CI_Controller
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_berakhir', 'Tanggal Berakhir', 'required');
         $this->form_validation->set_rules('alasan_berhenti', 'Alasan Berhenti', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);

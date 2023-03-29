@@ -26,6 +26,7 @@
                             <th>Jabatan</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
+                            <th>Status</th>
                             <th>Alasan Berhenti</th>
                             <th>Action</th>
                         </tr>
@@ -38,6 +39,7 @@
                             <th>Jabatan</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
+                            <th>Status</th>
                             <th>Alasan Berhenti</th>
                             <th>Action</th>
                         </tr>
@@ -52,6 +54,16 @@
                                 <td><?= $penga['jabatan']; ?></td>
                                 <td><?= mediumdate_indo($penga['tgl_mulai']); ?></td>
                                 <td><?= mediumdate_indo($penga['tgl_berakhir']); ?></td>
+                                <td>
+                                    <?php
+                                    if ($penga['status'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $penga['status']; ?></span>
+                                    <?php } else if ($penga['status'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $penga['status']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $penga['status']; ?></span>
+                                    <?php } ?>
+                                </td>
                                 <td><?= $penga['alasan_berhenti']; ?></td>
                                 <td>
                                     <a href="<?= base_url(); ?>pengalaman/detailpengalaman/<?= $penga['id_pengalaman']; ?>" class="btn btn-outline-info btn-sm my-2">Detail</a>

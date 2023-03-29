@@ -21,7 +21,8 @@ class M_pendidikan extends CI_Model
             "tgl_lulus" => $this->input->post('tgl_lulus', true),
             "judul_skripsi" => $this->input->post('judul_skripsi', true),
             "nama_dospem" => $this->input->post('nama_dospem', true),
-            "url" => $this->input->post('url', true)
+            "url" => $this->input->post('url', true),
+            "status" => $this->input->post('status', true)
         ];
         $this->db->insert('master_pendidikan', $data);
     }
@@ -48,7 +49,8 @@ class M_pendidikan extends CI_Model
             "tgl_lulus" => $this->input->post('tgl_lulus', true),
             "judul_skripsi" => $this->input->post('judul_skripsi', true),
             "nama_dospem" => $this->input->post('nama_dospem', true),
-            "url" => $this->input->post('url', true)
+            "url" => $this->input->post('url', true),
+            "status" => $this->input->post('status', true)
         ];
         $this->db->where('id_pendidikan', $this->input->post('id_pendidikan'));
         $this->db->update('master_pendidikan', $data);

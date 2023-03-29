@@ -17,7 +17,8 @@ class M_pengalaman extends CI_Model
             "jabatan" => $this->input->post('jabatan', true),
             "tgl_mulai" => $this->input->post('tgl_mulai', true),
             "tgl_berakhir" => $this->input->post('tgl_berakhir', true),
-            "alasan_berhenti" => $this->input->post('alasan_berhenti', true)
+            "alasan_berhenti" => $this->input->post('alasan_berhenti', true),
+            "status" => $this->input->post('status', true)
         ];
         $this->db->insert('data_pengalaman', $data);
     }
@@ -40,7 +41,8 @@ class M_pengalaman extends CI_Model
             "jabatan" => $this->input->post('jabatan', true),
             "tgl_mulai" => $this->input->post('tgl_mulai', true),
             "tgl_berakhir" => $this->input->post('tgl_berakhir', true),
-            "alasan_berhenti" => $this->input->post('alasan_berhenti', true)
+            "alasan_berhenti" => $this->input->post('alasan_berhenti', true),
+            "status" => $this->input->post('status', true)
         ];
         $this->db->where('id_pengalaman', $this->input->post('id_pengalaman'));
         $this->db->update('data_pengalaman', $data);

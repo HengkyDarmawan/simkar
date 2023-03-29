@@ -34,6 +34,7 @@ class Pendidikan extends CI_Controller
         $this->form_validation->set_rules('url', 'URL', 'required');
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_lulus', 'Tanggal Selesai', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);
@@ -70,6 +71,7 @@ class Pendidikan extends CI_Controller
         $this->form_validation->set_rules('url', 'URL', 'required');
         $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'required');
         $this->form_validation->set_rules('tgl_lulus', 'Tanggal Selesai', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/header', $data);

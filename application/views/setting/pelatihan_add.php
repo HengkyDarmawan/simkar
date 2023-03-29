@@ -11,23 +11,24 @@
         <div class="card-body" style="color: #000;">
             <form action="" method="post">
                 <div class="form-group">
-                    <label>Nama Pegawai</label>
-                    <select class="form-control" name="user_id">
-                        <option value="">Select Pegawai</option>
-                        <?php foreach ($users as $user) : ?>
-                            <option value="<?= $user['id']; ?>"><?= $user['name']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <label>Nama Pelatihan</label>
+                    <input type="text" name="nama_pelatihan" class="form-control">
+                    <?= form_error('nama_pelatihan', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label>Nama Perusahaan</label>
-                    <input type="text" name="nama_perusahaan" class="form-control">
-                    <?= form_error('nama_perusahaan', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <label>Organisasi Penerbit</label>
+                    <input type="text" name="organisasi_penerbit" class="form-control">
+                    <?= form_error('organisasi_penerbit', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label>Jabatan</label>
-                    <input type="text" name="jabatan" class="form-control">
-                    <?= form_error('jabatan', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <label>lokasi Pelatihan</label>
+                    <input type="text" name="lokasi_pelatihan" class="form-control">
+                    <?= form_error('lokasi_pelatihan', '<small class="text-danger pl-3">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi Pelatihan</label>
+                    <input type="text" name="deskripsi" class="form-control">
+                    <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label>Tanggal Mulai </label>
@@ -36,13 +37,13 @@
                 </div>
                 <div class="form-group">
                     <label>Tanggal Selesai</label>
-                    <input type="date" name="tgl_berakhir" class="form-control">
-                    <?= form_error('tgl_berakhir', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <input type="date" name="tgl_selesai" class="form-control">
+                    <?= form_error('tgl_selesai', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label>Alasan Berhenti</label>
-                    <input type="text" name="alasan_berhenti" class="form-control">
-                    <?= form_error('alasan_berhenti', '<small class="text-danger pl-3">', '</small>'); ?>
+                    <label>URL Sertifikat</label>
+                    <input type="text" name="url" class="form-control">
+                    <?= form_error('url', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label>Status</label>
@@ -54,7 +55,7 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">add</button>
-                <a href="<?= base_url('pengalaman'); ?>" class="btn btn-danger">Cancel</a>
+                <a href="<?= base_url('setting'); ?>" class="btn btn-danger">Cancel</a>
             </form>
         </div>
     </div>

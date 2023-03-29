@@ -5,7 +5,7 @@
         <div class="card-header">
             <div class="d-flex col-sm">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2"><?= $title; ?></h6>
-                <a href="<?= base_url(); ?>pendidikan/editpendidikan/<?= $pendidikan['id_pendidikan']; ?>" class="btn btn-outline-success">Edit pendidikan</a>
+                <a href="<?= base_url(); ?>pendidikan/editpendidikan/<?= $pendidikan['id_pendidikan']; ?>" class="btn btn-outline-primary">Edit pendidikan</a>
             </div>
         </div>
         <div class="card-body">
@@ -42,6 +42,18 @@
             <div class="row mb-3">
                 <div class="col-md-6 bold">Nama Dosen Pembimbing</div>
                 <div class="col-md-6"><?= $pendidikan['nama_dospem']; ?></div>
+            </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-6 bold">Status</div>
+                <div class="col-md-6"><?php
+                    if ($pendidikan['status'] == "review") { ?>
+                        <span class="badge badge-pill badge-warning "><?= $pendidikan['status']; ?></span>
+                    <?php } else if ($pendidikan['status'] == "approved") { ?>
+                        <span class="badge badge-pill badge-success "><?= $pendidikan['status']; ?></span>
+                    <?php } else { ?>
+                        <span class="badge badge-pill badge-danger "><?= $pendidikan['status']; ?></span>
+                    <?php } ?></div>
             </div>
             <hr>
             <div class="row mb-3">

@@ -131,6 +131,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Keluarga</h6>
+                <a href="<?= base_url('setting/addkeluarga'); ?>" class="btn btn-outline-primary btn-md">Add New Keluarga</a>
             </div>
         </div>
         <div class="card-body">
@@ -181,6 +182,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Pendidikan</h6>
+                <a href="<?= base_url('setting/addpendidikan'); ?>" class="btn btn-outline-primary btn-md">Add New Pendidikan</a>
             </div>
         </div>
         <div class="card-body">
@@ -193,6 +195,7 @@
                             <th>Jurusan & Universitas</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tfoot class="text-center">
@@ -202,6 +205,7 @@
                             <th>Jurusan & Universitas</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
+                            <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
@@ -216,6 +220,16 @@
                                 <td><?= mediumdate_indo($pen['tgl_mulai']); ?></td>
 
                                 <td><?= mediumdate_indo($pen['tgl_lulus']); ?></td>
+                                <td>
+                                    <?php
+                                    if ($pen['status'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $pen['status']; ?></span>
+                                    <?php } else if ($pen['status'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $pen['status']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $pen['status']; ?></span>
+                                    <?php } ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -237,6 +251,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Pengalaman Kerja</h6>
+                <a href="<?= base_url('setting/addpengalaman'); ?>" class="btn btn-outline-primary btn-md">Add New Pengalaman</a>
             </div>
         </div>
         <div class="card-body">
@@ -250,6 +265,7 @@
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Alasan Berhenti</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tfoot class="text-center">
@@ -260,6 +276,7 @@
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Alasan Berhenti</th>
+                            <th>Status</th>
                         </tr>
                     </tfoot>
                     <tbody class="text-center">
@@ -272,6 +289,16 @@
                                 <td><?= mediumdate_indo($penga['tgl_mulai']); ?></td>
                                 <td><?= mediumdate_indo($penga['tgl_berakhir']); ?></td>
                                 <td><?= $penga['alasan_berhenti']; ?></td>
+                                <td>
+                                    <?php
+                                    if ($penga['status'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $penga['status']; ?></span>
+                                    <?php } else if ($penga['status'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $penga['status']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $penga['status']; ?></span>
+                                    <?php } ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -294,6 +321,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Pelatihan</h6>
+                <a href="<?= base_url('setting/addpelatihan'); ?>" class="btn btn-outline-primary btn-md">Add New Pelatihan</a>
             </div>
 
         </div>
@@ -336,9 +364,18 @@
                                 <td><?= $pel['lokasi_pelatihan']; ?></td>
                                 <td><?= mediumdate_indo($pel['tgl_mulai']); ?></td>
                                 <td><?= mediumdate_indo($pel['tgl_selesai']); ?></td>
-                                <td><?= $pel['status']; ?></td>
                                 <td>
-                                    <a href="<?= $pel['url']; ?>" class="btn btn-outline-primary">Link</a>
+                                    <?php
+                                    if ($pel['status'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $pel['status']; ?></span>
+                                    <?php } else if ($pel['status'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $pel['status']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $pel['status']; ?></span>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <a href="<?= $pel['url']; ?>" class="btn btn-outline-primary" target="_blank">Link</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -362,6 +399,7 @@
         <div class="card-header py-3">
             <div class="d-flex">
                 <h6 class="m-0 font-weight-bold text-primary mr-auto p-2">Data Seminar</h6>
+                <a href="<?= base_url('setting/addseminar'); ?>" class="btn btn-outline-primary btn-md">Add New Seminar</a>
             </div>
 
         </div>
@@ -375,6 +413,7 @@
                             <th>Deskripsi Seminar</th>
                             <th>Lokasi Seminar</th>
                             <th>Tanggal Seminar</th>
+                            <th>Status</th>
                             <th>Link Sertifikat</th>
                         </tr>
                     </thead>
@@ -385,6 +424,7 @@
                             <th>Deskripsi Seminar</th>
                             <th>Lokasi Seminar</th>
                             <th>Tanggal Seminar</th>
+                            <th>Status</th>
                             <th>Link Sertifikat</th>
                         </tr>
                     </tfoot>
@@ -396,11 +436,21 @@
                                 <td><?= $seminar['nama_seminar']; ?>
                                     <br><strong>(<?= $seminar['organisasi_pelaksana']; ?>)</strong>
                                 </td>
-                                <td><?= $seminar['deskripsi_seminar']; ?></td>
+                                <td class="text-justify"><?= $seminar['deskripsi_seminar']; ?></td>
                                 <td><?= $seminar['lokasi_seminar']; ?></td>
                                 <td><?= mediumdate_indo($seminar['tgl_seminar']); ?></td>
                                 <td>
-                                    <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary">Link</a>
+                                    <?php
+                                    if ($seminar['status'] == "review") { ?>
+                                        <span class="badge badge-pill badge-warning "><?= $seminar['status']; ?></span>
+                                    <?php } else if ($seminar['status'] == "approved") { ?>
+                                        <span class="badge badge-pill badge-success "><?= $seminar['status']; ?></span>
+                                    <?php } else { ?>
+                                        <span class="badge badge-pill badge-danger "><?= $seminar['status']; ?></span>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <a href="<?= $seminar['url']; ?>" class="btn btn-outline-primary" target="_blank">Link</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2023 at 03:17 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Waktu pembuatan: 30 Mar 2023 pada 01.14
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_keluarga`
+-- Struktur dari tabel `data_keluarga`
 --
 
 CREATE TABLE `data_keluarga` (
@@ -36,18 +36,19 @@ CREATE TABLE `data_keluarga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_keluarga`
+-- Dumping data untuk tabel `data_keluarga`
 --
 
 INSERT INTO `data_keluarga` (`id_keluarga`, `user_id`, `nama_keluarga`, `hubungan`, `telp_keluarga`) VALUES
 (1, 1, 'sella', 'kakak', '089659177854'),
 (2, 1, 'Dika', 'adik', '089657112254'),
-(4, 4, 'Sandi', 'Anak', '089674154454');
+(4, 4, 'Sandi', 'Anak', '089674154454'),
+(6, 20, 'Ada Wong', 'Istri', '085117522255');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_pelatihan`
+-- Struktur dari tabel `data_pelatihan`
 --
 
 CREATE TABLE `data_pelatihan` (
@@ -65,12 +66,12 @@ CREATE TABLE `data_pelatihan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_pelatihan`
+-- Dumping data untuk tabel `data_pelatihan`
 --
 
 INSERT INTO `data_pelatihan` (`id_pelatihan`, `user_id`, `nama_pelatihan`, `organisasi_penerbit`, `lokasi_pelatihan`, `deskripsi`, `url`, `tgl_mulai`, `tgl_selesai`, `status`, `created_at`) VALUES
 (1, 1, 'Kampus Merdeka', 'Dicoding', 'Online', 'Mempelajari Mengenai javascript Fundamental', 'https://www.linkedin.com/in/hengky-darmawan/', '2022-03-01', '2022-08-31', 'approved', '2022-11-30'),
-(2, 1, 'Web Master', 'Dumet School', 'Tanjung Duren', 'Mempelajari mengenai HTML, CSS, Bootstrap', 'https://getbootstrap.com/', '2022-11-01', '2022-12-01', 'review', '2022-12-01'),
+(2, 1, 'Web Master', 'Dumet School', 'Tanjung Duren', 'Mempelajari mengenai HTML, CSS, Bootstrap', 'https://getbootstrap.com/', '2022-11-01', '2022-12-01', 'approved', '2022-12-01'),
 (4, 1, 'React Js', 'Digital Talent & KomInfo', 'Online', 'Mempelajari Mengenai React Js', 'https://bucket.cloud.lintasarta.co.id:8082/dts-sertifikat/sertifikat-pdf/e444dae6-c6db-46bd-8da0-23b811772f96.pdf', '2022-05-31', '2022-06-24', 'review', '2022-12-01'),
 (7, 1, 'HTML', 'Progate', 'Online', 'Mempelajari tag - tag HTML', 'https://progate.com/', '2022-12-01', '2022-12-20', 'approved', '2022-12-03'),
 (10, 5, 's', 's', 's', 'a', 'https://getbootstrap.com/docs/4.6/components/buttons/', '2022-12-18', '2022-12-31', 'rejected', '2022-12-22'),
@@ -80,7 +81,7 @@ INSERT INTO `data_pelatihan` (`id_pelatihan`, `user_id`, `nama_pelatihan`, `orga
 -- --------------------------------------------------------
 
 --
--- Table structure for table `data_pengalaman`
+-- Struktur dari tabel `data_pengalaman`
 --
 
 CREATE TABLE `data_pengalaman` (
@@ -90,23 +91,25 @@ CREATE TABLE `data_pengalaman` (
   `jabatan` varchar(128) NOT NULL,
   `tgl_mulai` date NOT NULL,
   `tgl_berakhir` date NOT NULL,
+  `status` varchar(255) NOT NULL,
   `alasan_berhenti` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `data_pengalaman`
+-- Dumping data untuk tabel `data_pengalaman`
 --
 
-INSERT INTO `data_pengalaman` (`id_pengalaman`, `user_id`, `nama_perusahaan`, `jabatan`, `tgl_mulai`, `tgl_berakhir`, `alasan_berhenti`) VALUES
-(1, 1, 'PT.ABC', 'UI/UX Design', '2021-11-01', '2022-11-01', 'kontrak habis'),
-(2, 5, 'PT.Sinar Jaya', 'Web Developer', '2022-12-01', '2022-12-31', 'resign'),
-(3, 4, 's', 's', '2022-12-15', '2022-12-16', 's'),
-(5, 3, 'PT.QWETY', 'Akuntan', '2019-01-01', '2020-05-31', 'Kontrak Habis');
+INSERT INTO `data_pengalaman` (`id_pengalaman`, `user_id`, `nama_perusahaan`, `jabatan`, `tgl_mulai`, `tgl_berakhir`, `status`, `alasan_berhenti`) VALUES
+(1, 1, 'PT.ABC', 'UI/UX Design', '2021-11-01', '2022-11-01', 'review', 'kontrak habis'),
+(2, 5, 'PT.Sinar Jaya', 'Web Developer', '2022-12-01', '2022-12-31', 'review', 'resign'),
+(3, 4, 's', 's', '2022-12-15', '2022-12-16', 'review', 's'),
+(5, 3, 'PT.QWETY', 'Akuntan', '2019-01-01', '2020-05-31', 'review', 'Kontrak Habis'),
+(6, 1, 's', 's', '2023-03-06', '2023-03-31', 'approved', 'saa');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_golongan`
+-- Struktur dari tabel `master_golongan`
 --
 
 CREATE TABLE `master_golongan` (
@@ -115,7 +118,7 @@ CREATE TABLE `master_golongan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_golongan`
+-- Dumping data untuk tabel `master_golongan`
 --
 
 INSERT INTO `master_golongan` (`id_golongan`, `nama_golongan`) VALUES
@@ -125,7 +128,7 @@ INSERT INTO `master_golongan` (`id_golongan`, `nama_golongan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_hukuman`
+-- Struktur dari tabel `master_hukuman`
 --
 
 CREATE TABLE `master_hukuman` (
@@ -134,7 +137,7 @@ CREATE TABLE `master_hukuman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_hukuman`
+-- Dumping data untuk tabel `master_hukuman`
 --
 
 INSERT INTO `master_hukuman` (`id`, `hukuman`) VALUES
@@ -146,7 +149,7 @@ INSERT INTO `master_hukuman` (`id`, `hukuman`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_jabatan`
+-- Struktur dari tabel `master_jabatan`
 --
 
 CREATE TABLE `master_jabatan` (
@@ -157,7 +160,7 @@ CREATE TABLE `master_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_jabatan`
+-- Dumping data untuk tabel `master_jabatan`
 --
 
 INSERT INTO `master_jabatan` (`id_jabatan`, `parent_jabatan_id`, `paket_id`, `jabatan`) VALUES
@@ -173,7 +176,7 @@ INSERT INTO `master_jabatan` (`id_jabatan`, `parent_jabatan_id`, `paket_id`, `ja
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_jurusan`
+-- Struktur dari tabel `master_jurusan`
 --
 
 CREATE TABLE `master_jurusan` (
@@ -182,7 +185,7 @@ CREATE TABLE `master_jurusan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_jurusan`
+-- Dumping data untuk tabel `master_jurusan`
 --
 
 INSERT INTO `master_jurusan` (`id`, `jurusan`) VALUES
@@ -194,7 +197,7 @@ INSERT INTO `master_jurusan` (`id`, `jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_kelompok_jabatan`
+-- Struktur dari tabel `master_kelompok_jabatan`
 --
 
 CREATE TABLE `master_kelompok_jabatan` (
@@ -204,17 +207,18 @@ CREATE TABLE `master_kelompok_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_kelompok_jabatan`
+-- Dumping data untuk tabel `master_kelompok_jabatan`
 --
 
 INSERT INTO `master_kelompok_jabatan` (`id`, `user_id`, `kelompok_jabatan`) VALUES
-(1, 1, '1.1.1.2'),
-(2, 2, '1.0.0.3');
+(1, 1, '1.2.1.1'),
+(2, 2, '1.0.0.3'),
+(3, 1, '1.1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_libur`
+-- Struktur dari tabel `master_libur`
 --
 
 CREATE TABLE `master_libur` (
@@ -225,7 +229,7 @@ CREATE TABLE `master_libur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_libur`
+-- Dumping data untuk tabel `master_libur`
 --
 
 INSERT INTO `master_libur` (`id_libur`, `tgl_mulai`, `tgl_akhir`, `keterangan`) VALUES
@@ -236,7 +240,7 @@ INSERT INTO `master_libur` (`id_libur`, `tgl_mulai`, `tgl_akhir`, `keterangan`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_paket`
+-- Struktur dari tabel `master_paket`
 --
 
 CREATE TABLE `master_paket` (
@@ -252,7 +256,7 @@ CREATE TABLE `master_paket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_paket`
+-- Dumping data untuk tabel `master_paket`
 --
 
 INSERT INTO `master_paket` (`id_paket`, `golongan_id`, `nama_paket`, `gaji_pokok`, `tj_jabatan_fungsional`, `tj_pendidikan_s3`, `tj_transport_makan`, `tj_jabatan_struktural`, `tj_jabatan_rangkap`) VALUES
@@ -262,7 +266,7 @@ INSERT INTO `master_paket` (`id_paket`, `golongan_id`, `nama_paket`, `gaji_pokok
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_parent_jabatan`
+-- Struktur dari tabel `master_parent_jabatan`
 --
 
 CREATE TABLE `master_parent_jabatan` (
@@ -272,7 +276,7 @@ CREATE TABLE `master_parent_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_parent_jabatan`
+-- Dumping data untuk tabel `master_parent_jabatan`
 --
 
 INSERT INTO `master_parent_jabatan` (`id`, `id_parent_jabatan`, `parent_jabatan`) VALUES
@@ -291,7 +295,7 @@ INSERT INTO `master_parent_jabatan` (`id`, `id_parent_jabatan`, `parent_jabatan`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_pendidikan`
+-- Struktur dari tabel `master_pendidikan`
 --
 
 CREATE TABLE `master_pendidikan` (
@@ -304,26 +308,28 @@ CREATE TABLE `master_pendidikan` (
   `judul_skripsi` varchar(128) NOT NULL,
   `nama_dospem` varchar(128) NOT NULL,
   `url` varchar(128) NOT NULL,
+  `status` varchar(255) NOT NULL,
   `tgl_mulai` date NOT NULL DEFAULT current_timestamp(),
   `tgl_lulus` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_pendidikan`
+-- Dumping data untuk tabel `master_pendidikan`
 --
 
-INSERT INTO `master_pendidikan` (`id_pendidikan`, `user_id`, `tingkat_pendidikan`, `jurusan`, `universitas`, `alamat_univ`, `judul_skripsi`, `nama_dospem`, `url`, `tgl_mulai`, `tgl_lulus`) VALUES
-(1, 1, 'S1', 'Teknik Informatika', 'Universitas Dian Nusantara', 'Grogol', 'E-Commerce', 'Giri', 'https://www.google.com/', '2013-01-01', '2017-01-31'),
-(2, 1, 'S2', 'Teknik Informatika', 'ITB', 'Bandung', 'HRIS', 'Desi', 'https://www.google.com/', '2023-01-12', '2018-01-31'),
-(4, 3, 'S2', 'Ekonomi', 'ITB', 'Depok', 'Investasi', 'Andi', 'https://www.google.com/', '2015-07-01', '2019-12-31'),
-(5, 4, 'S1', 'Teknik Informasi', 'Universitas Indonesia', 'Depok', 'Company Profile', 'Henri', 'https://www.google.com/', '2018-01-01', '2023-01-12'),
-(6, 5, 'S1', 'Sastra Inggris', 'Universitas Gajah Mada', 'Yogyakarta', 'An Analysis of Symbols in Toba Batak Traditional House', 'Siti', 'https://www.google.com/', '2016-01-08', '2022-01-14'),
-(7, 3, 'S3', 'Teknik Mesin', 'Universitas Gajah Mada', 'bandung', 'cara mudah membuat mesin', 'Yusuf', 'https://puslit.mercubuana.ac.id/', '2021-11-01', '2024-12-31');
+INSERT INTO `master_pendidikan` (`id_pendidikan`, `user_id`, `tingkat_pendidikan`, `jurusan`, `universitas`, `alamat_univ`, `judul_skripsi`, `nama_dospem`, `url`, `status`, `tgl_mulai`, `tgl_lulus`) VALUES
+(1, 1, 'S1', 'Teknik Informatika', 'Universitas Dian Nusantara', 'Grogol', 'E-Commerce', 'Giri', 'https://www.google.com/', 'approved', '2013-01-01', '2017-01-31'),
+(2, 1, 'S2', 'Teknik Informatika', 'ITB', 'Bandung', 'HRIS', 'Desi', 'https://www.google.com/', 'approved', '2023-01-12', '2018-01-31'),
+(4, 3, 'S2', 'Ekonomi', 'ITB', 'Depok', 'Investasi', 'Andi', 'https://www.google.com/', 'approved', '2015-07-01', '2019-12-31'),
+(5, 4, 'S1', 'Teknik Informasi', 'Universitas Indonesia', 'Depok', 'Company Profile', 'Henri', 'https://www.google.com/', 'approved', '2018-01-01', '2023-01-12'),
+(6, 5, 'S1', 'Sastra Inggris', 'Universitas Gajah Mada', 'Yogyakarta', 'An Analysis of Symbols in Toba Batak Traditional House', 'Siti', 'https://www.google.com/', 'approved', '2016-01-08', '2022-01-14'),
+(7, 3, 'S3', 'Teknik Mesin', 'Universitas Gajah Mada', 'bandung', 'cara mudah membuat mesin', 'Yusuf', 'https://puslit.mercubuana.ac.id/', 'approved', '2021-11-01', '2024-12-31'),
+(8, 20, 'S1', 'Teknik Informatika', 'Harvad', 'Amerika', 'AI', 'Stev', 'https://disdukcapil.bandaacehkota.go.id/tinymce_upload/tinymce/plugins/imagemanager/F-1.06.pdf', 'approved', '2023-03-01', '2023-03-31');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_seminar`
+-- Struktur dari tabel `master_seminar`
 --
 
 CREATE TABLE `master_seminar` (
@@ -339,7 +345,7 @@ CREATE TABLE `master_seminar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_seminar`
+-- Dumping data untuk tabel `master_seminar`
 --
 
 INSERT INTO `master_seminar` (`id_seminar`, `user_id`, `nama_seminar`, `deskripsi_seminar`, `organisasi_pelaksana`, `lokasi_seminar`, `tgl_seminar`, `url`, `status`) VALUES
@@ -351,7 +357,7 @@ INSERT INTO `master_seminar` (`id_seminar`, `user_id`, `nama_seminar`, `deskrips
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_status_pegawai`
+-- Struktur dari tabel `master_status_pegawai`
 --
 
 CREATE TABLE `master_status_pegawai` (
@@ -360,7 +366,7 @@ CREATE TABLE `master_status_pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_status_pegawai`
+-- Dumping data untuk tabel `master_status_pegawai`
 --
 
 INSERT INTO `master_status_pegawai` (`id`, `status_pegawai`) VALUES
@@ -370,7 +376,7 @@ INSERT INTO `master_status_pegawai` (`id`, `status_pegawai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_university`
+-- Struktur dari tabel `master_university`
 --
 
 CREATE TABLE `master_university` (
@@ -379,7 +385,7 @@ CREATE TABLE `master_university` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `master_university`
+-- Dumping data untuk tabel `master_university`
 --
 
 INSERT INTO `master_university` (`id`, `universitas`) VALUES
@@ -391,7 +397,7 @@ INSERT INTO `master_university` (`id`, `universitas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -427,19 +433,21 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `jabatan_id`, `address`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `status_pernikahan`, `nik_ktp`, `nik_karyawan`, `nama_bank`, `no_rek`, `npwp`, `email`, `email_undira`, `telp`, `nama_darurat`, `telp_darurat`, `no_bpjs_kesehatan`, `no_bpjs_ketenagakerjaan`, `jenis_pegawai`, `image`, `password`, `role_id`, `is_active`, `tgl_bergabung`, `created_at`, `approval`) VALUES
 (1, 'Hengky Darmawan', 4, 'Jakarta Barat, Indonesia', 'Pontianak', '2001-02-22', 'Pria', 'Buddha', 'Singel', 3174092505520003, 1100000000011, 'BCA', 1234567891123, '12.345.678.9-101.012', 'hengky@gmail.com', 'hengkydarmawan66@gmail.com', '082186629996', 'Ani', '082196629997', 1234567, 123456789, 'tendik', 'default.png', '$2y$10$ojaaWuHiz1Lc.8.vAs5qZu7lPXwvCj5YsIqQ0StBObS9mHbMXh/UG', 1, 1, '2022-12-13', '2021-11-02', 'approved'),
 (3, 'Athiyyah Nadiya', 1, 'Jakarta Selatan, Indonesia', 'Surabaya', '2009-10-02', 'Perempuan', 'Islam', 'single', 1234, 1100000000013, 'Mandiri', 654654654, '12.345.678.9-101.013', 'staf@gmail.com', 'stafundira@gmail.com', '081211223566', 'Yudi', '082196629982', 6546544, 747444121, 'dosen tetap', 'girl.jpg', '$2y$10$U30aolUMCLZA11aaB/c1quMY5vs1aWIyYMs0luD8ugmJ2RTgNeDFu', 2, 1, '2019-12-13', '2010-10-22', 'approved'),
-(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Pria', 'Islam', 'menikah', 56464, 1100000000010, 'Mandiri', 65644452545, '12.345.678.9-101.014', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', 'Sinta', '082196629722', 44443313, 8797741, 'dosen tidak tetap', 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', '2000-11-12', 'review'),
-(5, 'eky', 10, 'Jakarta Barat, Indonesia', 'Singkawang', '1995-11-15', 'Pria', 'Katolik', 'menikah', 123555, 12345455, 'Mandiri', 12355, '12.345.678.9-101.017', 'eky@gmail.com', 'hengkycross52@gmail.com', '089659172256', 'Eko', '082196628852', 121377, 132177, 'pegawai tetap', 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-01', '2001-11-11', 'review');
+(4, 'Giri', 1, 'Jakarta Barat, Indonesia', 'Bandung', '1995-01-01', 'Pria', 'Islam', 'menikah', 56464, 1100000000010, 'Mandiri', 65644452545, '12.345.678.9-101.014', 'giri@gmail.com', 'giriundira@gmail.com', '081211223566', 'Sinta', '082196629722', 44443313, 8797741, 'dosen tidak tetap', 'default.png', '$2y$10$18r7ywjo4z82VioBR4U4GePdiMuX6.lQYN100BprgTNAx2pmXRN8W', 1, 1, '2018-12-13', '2000-11-12', 'rejected'),
+(5, 'eky', 10, 'Jakarta Barat, Indonesia', 'Singkawang', '1995-11-15', 'Pria', 'Katolik', 'menikah', 123555, 12345455, 'Mandiri', 12355, '12.345.678.9-101.017', 'eky@gmail.com', 'hengkycross52@gmail.com', '089659172256', 'Eko', '082196628852', 121377, 132177, 'pegawai tetap', 'default.png', '$2y$10$b8nykjIrz5BUzu0cCpg78uYxQrtjTMMoFoyG7hRwn6LW0QMFXgJjS', 3, 1, '2020-12-01', '2001-11-11', 'approved'),
+(18, 'as', 12, 'jakarta', 'Surabaya', '2019-03-12', 'Perempuan', 'Konghuchu', 'Singel', 9223372036854775807, 12345455, 'Mandiri', 654455, '12.345.678.9-101.017', 'sa@gmail.com', 'ekoUndira@gmail.com', '082186629997', 'su', '085117522254', 44411132123, 1234567333, '', 'default.png', '$2y$10$39zCTE/HnLQY4OGjsIzY5uzhnf11FbcJluaMDokbeTwgXC1WtkPqm', 3, 1, '2023-03-01', '2023-03-01', 'approved'),
+(20, 'tes', 1, 'paris', 'Paris', '2023-03-01', 'pria', 'Kristen', 'nikah', 123555, 12345455, 'BCA', 654455, '12.345.678.9-101.020', 'leon@gmail.com', 'leonUndira@gmail.com', '089659172256', 'Ada Wong', '085117522255', 123456722, 123456733, '', 'default.png', '$2y$10$wf0Kjfiszy.zjhJMrkTCE.V6O/MjegWYUOzoPz/MiiUQlSZkW1PUe', 1, 1, '2023-03-01', '2023-03-02', 'review');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_access_menu`
+-- Struktur dari tabel `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -450,7 +458,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_access_menu`
+-- Dumping data untuk tabel `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`) VALUES
@@ -478,7 +486,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`, `sub_menu_id`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_jabatan`
+-- Struktur dari tabel `user_jabatan`
 --
 
 CREATE TABLE `user_jabatan` (
@@ -488,7 +496,7 @@ CREATE TABLE `user_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_jabatan`
+-- Dumping data untuk tabel `user_jabatan`
 --
 
 INSERT INTO `user_jabatan` (`id`, `user_id`, `jabatan_id`) VALUES
@@ -498,7 +506,7 @@ INSERT INTO `user_jabatan` (`id`, `user_id`, `jabatan_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_menu`
+-- Struktur dari tabel `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -507,7 +515,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_menu`
+-- Dumping data untuk tabel `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -525,7 +533,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_role`
+-- Struktur dari tabel `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -534,7 +542,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data untuk tabel `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -545,7 +553,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_sub_menu`
+-- Struktur dari tabel `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -558,7 +566,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_sub_menu`
+-- Dumping data untuk tabel `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -582,13 +590,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (33, 12, 'Data Libur', 'libur', 'fas fa-fw fa-calendar-week', 1),
 (34, 6, 'Rekap Absen', 'absensi', 'fas fa-fw fa-user-check', 1),
 (35, 12, 'Data Staf', 'staf/pegawai', 'fas fa-fw fa-users', 0),
-(38, 1, 'Approval User', 'approval', 'fas fa-fw fa-user-check', 1),
-(39, 1, 'Approved User', 'pegawai/approvedPegawai', 'fas fa-fw fa-user-friends', 1);
+(38, 1, 'Approval User', 'approval', 'fas fa-fw fa-user-check', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_token`
+-- Struktur dari tabel `user_token`
 --
 
 CREATE TABLE `user_token` (
@@ -599,276 +606,283 @@ CREATE TABLE `user_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data untuk tabel `user_token`
+--
+
+INSERT INTO `user_token` (`id`, `email`, `token`, `date_created`) VALUES
+(13, 'hengkydarmawan66@gmail.com', '7v5uLOwiZk5z/fW6pfdSo+E/VslSg6nAJvp968xCCHA=', 1677329950);
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `data_keluarga`
+-- Indeks untuk tabel `data_keluarga`
 --
 ALTER TABLE `data_keluarga`
   ADD PRIMARY KEY (`id_keluarga`);
 
 --
--- Indexes for table `data_pelatihan`
+-- Indeks untuk tabel `data_pelatihan`
 --
 ALTER TABLE `data_pelatihan`
   ADD PRIMARY KEY (`id_pelatihan`);
 
 --
--- Indexes for table `data_pengalaman`
+-- Indeks untuk tabel `data_pengalaman`
 --
 ALTER TABLE `data_pengalaman`
   ADD PRIMARY KEY (`id_pengalaman`);
 
 --
--- Indexes for table `master_golongan`
+-- Indeks untuk tabel `master_golongan`
 --
 ALTER TABLE `master_golongan`
   ADD PRIMARY KEY (`id_golongan`);
 
 --
--- Indexes for table `master_hukuman`
+-- Indeks untuk tabel `master_hukuman`
 --
 ALTER TABLE `master_hukuman`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_jabatan`
+-- Indeks untuk tabel `master_jabatan`
 --
 ALTER TABLE `master_jabatan`
   ADD PRIMARY KEY (`id_jabatan`);
 
 --
--- Indexes for table `master_jurusan`
+-- Indeks untuk tabel `master_jurusan`
 --
 ALTER TABLE `master_jurusan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_kelompok_jabatan`
+-- Indeks untuk tabel `master_kelompok_jabatan`
 --
 ALTER TABLE `master_kelompok_jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_libur`
+-- Indeks untuk tabel `master_libur`
 --
 ALTER TABLE `master_libur`
   ADD PRIMARY KEY (`id_libur`);
 
 --
--- Indexes for table `master_paket`
+-- Indeks untuk tabel `master_paket`
 --
 ALTER TABLE `master_paket`
   ADD PRIMARY KEY (`id_paket`);
 
 --
--- Indexes for table `master_parent_jabatan`
+-- Indeks untuk tabel `master_parent_jabatan`
 --
 ALTER TABLE `master_parent_jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_pendidikan`
+-- Indeks untuk tabel `master_pendidikan`
 --
 ALTER TABLE `master_pendidikan`
   ADD PRIMARY KEY (`id_pendidikan`);
 
 --
--- Indexes for table `master_seminar`
+-- Indeks untuk tabel `master_seminar`
 --
 ALTER TABLE `master_seminar`
   ADD PRIMARY KEY (`id_seminar`);
 
 --
--- Indexes for table `master_status_pegawai`
+-- Indeks untuk tabel `master_status_pegawai`
 --
 ALTER TABLE `master_status_pegawai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `master_university`
+-- Indeks untuk tabel `master_university`
 --
 ALTER TABLE `master_university`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_access_menu`
+-- Indeks untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_jabatan`
+-- Indeks untuk tabel `user_jabatan`
 --
 ALTER TABLE `user_jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_menu`
+-- Indeks untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_role`
+-- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_sub_menu`
+-- Indeks untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_token`
+-- Indeks untuk tabel `user_token`
 --
 ALTER TABLE `user_token`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `data_keluarga`
+-- AUTO_INCREMENT untuk tabel `data_keluarga`
 --
 ALTER TABLE `data_keluarga`
-  MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_keluarga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `data_pelatihan`
+-- AUTO_INCREMENT untuk tabel `data_pelatihan`
 --
 ALTER TABLE `data_pelatihan`
   MODIFY `id_pelatihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `data_pengalaman`
+-- AUTO_INCREMENT untuk tabel `data_pengalaman`
 --
 ALTER TABLE `data_pengalaman`
-  MODIFY `id_pengalaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pengalaman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `master_golongan`
+-- AUTO_INCREMENT untuk tabel `master_golongan`
 --
 ALTER TABLE `master_golongan`
   MODIFY `id_golongan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `master_hukuman`
+-- AUTO_INCREMENT untuk tabel `master_hukuman`
 --
 ALTER TABLE `master_hukuman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `master_jabatan`
+-- AUTO_INCREMENT untuk tabel `master_jabatan`
 --
 ALTER TABLE `master_jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `master_jurusan`
+-- AUTO_INCREMENT untuk tabel `master_jurusan`
 --
 ALTER TABLE `master_jurusan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `master_kelompok_jabatan`
+-- AUTO_INCREMENT untuk tabel `master_kelompok_jabatan`
 --
 ALTER TABLE `master_kelompok_jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `master_libur`
+-- AUTO_INCREMENT untuk tabel `master_libur`
 --
 ALTER TABLE `master_libur`
   MODIFY `id_libur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `master_paket`
+-- AUTO_INCREMENT untuk tabel `master_paket`
 --
 ALTER TABLE `master_paket`
   MODIFY `id_paket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `master_parent_jabatan`
+-- AUTO_INCREMENT untuk tabel `master_parent_jabatan`
 --
 ALTER TABLE `master_parent_jabatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `master_pendidikan`
+-- AUTO_INCREMENT untuk tabel `master_pendidikan`
 --
 ALTER TABLE `master_pendidikan`
-  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `master_seminar`
+-- AUTO_INCREMENT untuk tabel `master_seminar`
 --
 ALTER TABLE `master_seminar`
   MODIFY `id_seminar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `master_status_pegawai`
+-- AUTO_INCREMENT untuk tabel `master_status_pegawai`
 --
 ALTER TABLE `master_status_pegawai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `master_university`
+-- AUTO_INCREMENT untuk tabel `master_university`
 --
 ALTER TABLE `master_university`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `user_access_menu`
+-- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
--- AUTO_INCREMENT for table `user_jabatan`
+-- AUTO_INCREMENT untuk tabel `user_jabatan`
 --
 ALTER TABLE `user_jabatan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user_menu`
+-- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `user_role`
+-- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user_sub_menu`
+-- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT for table `user_token`
+-- AUTO_INCREMENT untuk tabel `user_token`
 --
 ALTER TABLE `user_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

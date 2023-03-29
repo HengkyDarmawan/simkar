@@ -22,8 +22,13 @@ class M_auth extends CI_Model
     {
         return $this->db->get_where('data_pelatihan', ['user_id' => $user_id])->result_array();
     }
+    // seminar
     public function getDataSeminar($user_id)
     {
         return $this->db->get_where('master_seminar', ['user_id' => $user_id])->result_array();
+    }
+    public function getSeminarId($id)
+    {
+        return $this->db->get_where('master_seminar', ['id_seminar' => $id])->row_array();
     }
 }

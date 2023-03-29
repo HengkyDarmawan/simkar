@@ -11,15 +11,6 @@
         <div class="card-body" style="color: #000;">
             <form action="" method="post">
                 <div class="form-group">
-                    <label>Nama Pegawai</label>
-                    <select class="form-control" name="user_id">
-                        <option value="">Select Pegawai</option>
-                        <?php foreach ($users as $user) : ?>
-                            <option value="<?= $user['id']; ?>"><?= $user['name']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label>Tingkat Pendidikan</label>
                     <select name="tingkat_pendidikan" class="form-control">
                         <option value="">- Pilih Tingkat Pendidikan -</option>
@@ -72,17 +63,8 @@
                     <input type="date" name="tgl_lulus" class="form-control">
                     <?= form_error('tgl_lulus', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
-                <div class="form-group">
-                    <label>Status</label>
-                    <select name="status" class="form-control">
-                        <option value="">- Pilih Status-</option>
-                        <option value="review">Review</option>
-                        <option value="approved">Approved</option>
-                        <option value="rejected">rejected</option>
-                    </select>
-                </div>
                 <button type="submit" class="btn btn-primary">add</button>
-                <a href="<?= base_url('pendidikan'); ?>" class="btn btn-danger">Cancel</a>
+                <a href="<?= base_url('setting'); ?>" class="btn btn-danger">Cancel</a>
             </form>
         </div>
     </div>

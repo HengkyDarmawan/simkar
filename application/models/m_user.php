@@ -21,6 +21,10 @@ class M_user extends CI_Model
         $this->db->join('master_jabatan mj', 'mj.id_jabatan = u.jabatan_id');
         return $this->db->get()->row_array();
     }
+    public function getJabatanByUserLogin($user_id) {
+        $query = $this->db->get_where('master_kelompok_jabatan', array('user_id' => $user_id));
+        return $query->result_array();
+    }
     public function getPegawaiByID($id)
     {
         $this->db->select('user.*, master_jabatan.jabatan');

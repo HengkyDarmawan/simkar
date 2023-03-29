@@ -45,6 +45,25 @@
                     <input type="text" name="alasan_berhenti" class="form-control" value="<?= $pengalaman['alasan_berhenti']; ?>">
                     <?= form_error('alasan_berhenti', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" class="form-control">
+                        <?php
+                        if ($pengalaman['status'] == "review") { ?>
+                            <option value="review" selected>Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else if ($pengalaman['status'] == "approved") { ?>
+                            <option value="review">Review</option>
+                            <option value="approved" selected>Approved</option>
+                            <option value="rejected">Rejected</option>
+                        <?php } else { ?>
+                            <option value="review">Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected" selected>Rejected</option>
+                        <?php } ?>
+                    </select>
+                </div>
                 <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                 <a href="<?= base_url('pengalaman'); ?>" class="btn btn-danger">Cancel</a>
             </form>
